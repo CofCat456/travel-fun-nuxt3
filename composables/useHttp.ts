@@ -51,13 +51,9 @@ function handleError<T>(response: FetchResponse<Response<T>> & FetchResponse<Res
 }
 
 function fetch<T>(url: UrlType, option: HttpOption<T>) {
-  console.log('url', url)
-
   return useFetch(url, {
     // 请求拦截器
     onRequest({ options }) {
-      console.log('request', options)
-
       // 添加baseURL,nuxt3环境变量要从useRuntimeConfig里面取
       const { public: { apiBase, apiSecret } } = useRuntimeConfig()
 
@@ -74,10 +70,8 @@ function fetch<T>(url: UrlType, option: HttpOption<T>) {
       }
     },
 
-
     // 响应拦截
     onResponse({ response }) {
-      console.log(response)
       // 在这里判断错误
       if (!response._data.success) {
         handleError<T>(response)

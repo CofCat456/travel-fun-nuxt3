@@ -1,0 +1,38 @@
+<script lang="ts" setup>
+import { mockHotCitys, mockNews } from '~/constants'
+
+const productStore = useProductStore()
+
+const { getByNewest, getByPopular } = storeToRefs(productStore)
+
+const { getFilterData } = productStore
+
+const goCountry = () => navigateTo({ name: 'country', params: { name: 'taiwan' } })
+</script>
+
+<template>
+  <Banner :center="false" bg-url="/images/banner.jpg">
+    <template #title>
+      <span>旅遊趣</span>
+      陪你去台灣各地
+    </template>
+    <template #sec-title>
+      讓我們帶著你一同欣賞台灣的美
+    </template>
+    <ClientOnly>
+      <Search />
+    </ClientOnly>
+  </Banner>
+  <div class="mb-4 md:mb-0 md:mt-[60px]">
+    <SwiperNew :news="mockNews" />
+  </div>
+  <NuxtImg alt="travel world fun" class="hidden -translate-y-8 md:block" loading="lazy" src="/images/travel-the-world.png" width="1000" />
+  <SwiperProduct :products="getFilterData(getByPopular)" sec-title="尋找最受歡迎的商品嗎？別再猶豫，立刻挑選！" title="Top 10 商品" />
+  <NuxtImg alt="home bg" class="my-6" loading="lazy" src="/images/home-bg.png" width="1920" />
+  <SwiperProduct
+    :btn="{ text: '查看更多' }" :products="getFilterData(getByNewest)" @btn-click="goCountry"
+    sec-title="一直關注最新產品的我們，給您帶來最好的選擇和品質！" title="最新產品"
+  />
+  <HotCity :hot-citys="mockHotCitys" />
+  <Member />
+</template>

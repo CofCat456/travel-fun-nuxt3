@@ -61,20 +61,6 @@ const useProductStore = defineStore('product', () => {
     }
   }
 
-  const getProduct = async (productId: string) => {
-    const res = await product.getProduct(productId)
-    const { data } = res
-
-    if (data.value) {
-      const { product, success } = data.value
-
-      if (success)
-        return product
-    }
-
-    return null
-  }
-
   return {
     getByNewest,
     getByPopular,
@@ -83,7 +69,6 @@ const useProductStore = defineStore('product', () => {
     getByRecommended,
     getByReviewCount,
     getFilterData,
-    getProduct,
     getProducts,
     getSortData,
     productList,

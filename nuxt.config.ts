@@ -1,6 +1,12 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  css: [
+    '~/assets/css/main.css',
+  ],
   devtools: { enabled: true },
+  experimental: {
+    renderJsonPayloads: false,
+  },
   modules: [
     '@nuxtjs/tailwindcss',
     'nuxt-swiper',
@@ -12,11 +18,18 @@ export default defineNuxtConfig({
       },
     }],
     '@nuxt/image',
+    '@bg-dev/nuxt-naiveui',
   ],
   runtimeConfig: {
     public: {
       apiBase: '', // can be overridden by NUXT_PUBLIC_API_BASE environment variable
       apiSecret: '', // can be overridden by NUXT_API_SECRET environment variable
+      googleMapApiKey: '',
+
     },
   },
+  swiper: {
+    modules: ['navigation'],
+  },
 })
+

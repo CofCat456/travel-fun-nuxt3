@@ -34,11 +34,9 @@ module.exports = {
         sans: ['Noto Sans TC', ...fontFamily.sans],
         serif: ['Noto Serif TC', ...fontFamily.sans],
       },
-      spacing: {
-        cc: {
-          'big-width': '1328px',
-          'width': '1296px',
-        },
+      maxWidth: {
+        'cc-big-width': '1328px',
+        'cc-width': '1296px',
       },
     },
 
