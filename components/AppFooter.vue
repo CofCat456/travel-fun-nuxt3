@@ -4,9 +4,9 @@ import { copyRight } from '~/constants'
 </script>
 
 <template>
-  <footer class="flex flex-col items-center  bg-cc-other-2 p-4">
+  <footer class="flex flex-col items-center bg-cc-other-2  px-4 pb-28 md:pb-4">
     <div class="mb-10 mt-6 flex items-center gap-8">
-      <NuxtImg :src="websiteConfig.logoImage" alt="logo" fit="cover" height="40" />
+      <NuxtImg :src="websiteConfig.logoImage" alt="logo" fit="cover" height="40" width="144" />
       <ul class="flex items-center gap-4">
         <li
           :key="item.icon"

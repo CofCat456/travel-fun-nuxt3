@@ -22,18 +22,19 @@ const otherCity = computed(() => {
   <div class="bg-cc-other-7/80 pb-6 pt-12 md:pb-20">
     <NuxtLayout>
       <UiTitle sec-title="探索最熱門的城市，發現更多令人驚嘆的旅程！" title="熱門城市" />
-      <div class="grid grid-rows-2 gap-3 md:grid-flow-col md:gap-6" v-if="hotCitys">
+      <div class="grid grid-flow-row grid-cols-4 justify-between gap-3 md:gap-6" v-if="hotCitys">
         <NuxtLink
           :to="{ name: 'city-name', params: { name: `${mainCity.enName.toLowerCase()}` } }" v-if="mainCity?.name" v-slot="{ navigate }"
           custom
         >
-          <div @click="navigate" class="relative col-span-2 row-span-2 overflow-hidden rounded-m">
+          <div @click="navigate" class="relative col-span-4 row-span-4 aspect-square overflow-hidden rounded-m md:col-span-2 md:row-span-2 md:aspect-[636/368]">
             <NuxtImg
               :alt="mainCity.name"
               :src="mainCity.image"
               class="clear-scale h-full w-full cursor-pointer object-cover transition-transform duration-500"
+              height="360"
+              loading="lazy"
               quality="100"
-              width="636"
             />
             <div class="absolute bottom-3 left-3 font-bold text-white">
               <h3 class="mb-1">
@@ -47,11 +48,12 @@ const otherCity = computed(() => {
           :key="city.name" :to="{ name: 'city-name', params: { name: `${city.enName.toLowerCase()}` } }" v-for="city in otherCity" v-slot="{ navigate }"
           custom
         >
-          <div @click="navigate" class="relative aspect-[4/3] overflow-hidden rounded-m">
+          <div @click="navigate" class="relative col-span-2 aspect-square overflow-hidden rounded-m md:col-span-1 md:aspect-video">
             <NuxtImg
               :alt="city.name"
               :src="city.image"
               class="clear-scale h-full w-full cursor-pointer object-cover transition-transform duration-500"
+              height="168"
               loading="lazy"
               quality="100"
             />

@@ -8,9 +8,7 @@ const emit = defineEmits<{
   active: [target: string]
 }>()
 
-const deviceStore = useDeviceStore()
-
-const { isMobile } = storeToRefs(deviceStore)
+const { isMobile } = useDevice()
 
 const activate: DrawerActive = reactive({
   active: false,
@@ -25,11 +23,6 @@ function toggleActive() {
 };
 
 const closeActive = () => activate.active = false
-
-// FIX:
-// onBeforeRouteUpdate(() => {
-//   closeActive()
-// })
 
 defineExpose({
   closeActive,

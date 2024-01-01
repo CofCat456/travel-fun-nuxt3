@@ -12,8 +12,9 @@ defineProps<Product & { notRanking?: boolean, ranking?: number }>()
 
 const favoriteStore = useFavoriteStore()
 
-const { goProduct } = useGo()
 const { addFavorite, checkFavorite, removeFavorite } = favoriteStore
+
+const goProduct = (id: string) => useRouter().push(`/product/${id}`)
 </script>
 
 <template>

@@ -26,7 +26,7 @@ button {
     cursor: not-allowed;
     opacity: theme('opacity.60');
 
-    & > * {
+    &>* {
       cursor: not-allowed;
     }
   }
@@ -52,4 +52,10 @@ button {
 
 .n-base-select-menu .n-base-select-menu__empty {
   padding: 0px;
+}
+
+/* fix overflow */
+.n-breadcrumb>ul {
+  display: flex;
+  flex-wrap: wrap;
 }

@@ -32,14 +32,14 @@ function toggleFavoriteHandler(id: string, title: string) {
         <span class="px-1 font-medium leading-5 text-cc-accent"> {{ evaluate }} </span>
       </div>
       <div class="ml-2 cursor-pointer">
-        <span class="underline">({{ evaluateNum }} 則評價)</span>
+        <span class="hover:underline">({{ evaluateNum }} 則評價)</span>
       </div>
     </div>
-    <div class="flex flex-1 cursor-pointer items-center whitespace-nowrap underline" v-if="!isMobile">
+    <div class="flex flex-1 cursor-pointer items-center whitespace-nowrap hover:underline" v-if="!isMobile">
       <NIcon size="24">
         <LocationOnIcon />
       </NIcon>
-      <span @click="scrollTo('map')" class="ml-2">{{ address }}</span>
+      <span @click="scrollTo('map')" class="ml-1">{{ address }}</span>
     </div>
     <div :class="checkFavorite(id) ? 'text-cc-accent' : 'hover:text-cc-accent'" @click="toggleFavoriteHandler(id, title)" class="flex cursor-pointer items-center transition-colors" v-if="!isMobile">
       <NIcon class="icon-hover" size="24" v-if="checkFavorite(id)">

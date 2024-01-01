@@ -15,9 +15,7 @@ const emit = defineEmits<{
   active: [target: string]
 }>()
 
-const deviceStore = useDeviceStore()
-
-const { isMobile } = storeToRefs(deviceStore)
+const { isMobile } = useDevice()
 
 const tooltipThemeOverrides: TooltipThemeOverrides = {
   color: '#fff',
