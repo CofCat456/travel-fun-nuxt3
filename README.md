@@ -4,8 +4,18 @@
 
 ## 重構中
 
-| Description | Progress                                                            |
+| Description |                              Progress                               |
 | ----------- | ------------------------------------------------------------------- |
 | Api         | ![100%](https://progress-bar.dev/100/?title=done&color=555555)      |
-| 前台        | ![Planned](https://progress-bar.dev/20/?title=planned&color=b8860b) |
+| 前台        | ![Planned](https://progress-bar.dev/30/?title=planned&color=b8860b) |
 | 後台        | ![Planned](https://progress-bar.dev/0/?title=planned&color=b8860b)  |
+
+<details>
+<summary>Done</summary>
+
+| Description |                            Progress                            |
+| ----------- | -------------------------------------------------------------- |
+| 首頁        | ![100%](https://progress-bar.dev/100/?title=done&color=555555) |
+| 產品頁面    | ![100%](https://progress-bar.dev/100/?title=done&color=555555) |
+
+</details>
