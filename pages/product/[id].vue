@@ -94,110 +94,112 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div id="banner" ref="bannerRef" />
-  <template v-if="isLoad">
-    <NuxtLayout class="pb-5 md:py-5">
-      <NBreadcrumb class="my-2" separator=">">
-        <template :key="title" v-for="{ title, url } in getBreadcrumbs">
-          <NBreadcrumbItem v-if="url">
-            <NuxtLink :to="url">
+  <section id="product">
+    <div id="banner" ref="bannerRef" />
+    <template v-if="isLoad">
+      <NuxtLayout class="pb-5 md:py-5">
+        <NBreadcrumb class="my-2" separator=">">
+          <template :key="title" v-for="{ title, url } in getBreadcrumbs">
+            <NBreadcrumbItem v-if="url">
+              <NuxtLink :to="url">
+                {{ title }}
+              </NuxtLink>
+            </NBreadcrumbItem>
+            <NBreadcrumbItem v-else>
               {{ title }}
-            </NuxtLink>
-          </NBreadcrumbItem>
-          <NBreadcrumbItem v-else>
-            {{ title }}
-          </NBreadcrumbItem>
-        </template>
-      </NBreadcrumb>
-      <h1 class="text-2xl font-bold md:text-3xl">
-        {{ product.title }}
-      </h1>
-      <PageProductTopWrapper
-        :address="product.address"
-        :evaluate="product.evaluate"
-        :evaluate-num="product.evaluateNum"
-        :id="product.id"
-        :is-mobile="isMobile"
-        :title="product.title"
-      />
-
-      <teleport
-        :disabled="!isMobile"
-        to="#banner"
-        v-if="bannerRef"
-      >
-        <SwiperBanner
-          :images-url="product.imagesUrl || []"
+            </NBreadcrumbItem>
+          </template>
+        </NBreadcrumb>
+        <h1 class="text-2xl font-bold md:text-3xl">
+          {{ product.title }}
+        </h1>
+        <PageProductTopWrapper
+          :address="product.address"
+          :evaluate="product.evaluate"
+          :evaluate-num="product.evaluateNum"
+          :id="product.id"
           :is-mobile="isMobile"
-          :slides-per-group="1"
-          :slides-per-view="1.75"
-          :space-between="10"
-          :speed="600"
-          centered-slides
-          loop
+          :title="product.title"
         />
-      </teleport>
-      <div class="flex flex-col gap-8 md:flex-row">
-        <div class="order-1 w-full md:w-8/12" v-if="product.features">
-          <PageProductLeftSide :features="product.features" />
-        </div>
-        <aside :class="isMobile ? 'order-first' : 'order-2'">
-          <PageProductRightSide
-            :id="product.id"
-            :is-mobile="isMobile"
-            :origin-price="product.origin_price"
-            :price="product.price"
-            :title="product.title"
-          />
-        </aside>
-      </div>
-    </NuxtLayout>
-    <div class="bg-cc-other-7/80 py-5 md:py-10" v-if="product.plans && product.plans?.length !== 0">
-      <LazyPageProductPlans>
-        <template
-          :key="plan.content"
-          v-for="plan in product.plans || []"
+
+        <teleport
+          :disabled="!isMobile"
+          to="#banner"
+          v-if="bannerRef"
         >
-          <PageProductPlan
-            :content="plan.content"
-            :date="product.date"
-            :id="product.id"
-            :is-loading="isLoading"
+          <SwiperBanner
+            :images-url="product.imagesUrl || []"
             :is-mobile="isMobile"
-            :origin-price="plan.origin_price"
-            :price="plan.price"
-            :product-title="product.title"
-            :title="plan.title"
-            :unit="product.unit"
-            @add-cart="addCart"
+            :slides-per-group="1"
+            :slides-per-view="1.75"
+            :space-between="10"
+            :speed="600"
+            centered-slides
+            loop
           />
-        </template>
-      </LazyPageProductPlans>
-    </div>
-    <NuxtLayout class="py-5 md:py-10">
-      <NSpace :size="60" class="w-full md:w-8/12 md:pr-8" vertical>
-        <PageProductContent :content="product.content" v-if="product.content" />
-        <div :class="isMobile ? 'w-full' : 'w-4/5'">
-          <UiTitle title="景點地圖" page />
-          <Embed
-            :address="product.address"
-            :api-key="googleMapApiKey"
-            height="400px"
-            id="map"
-            map-mode="place"
-            v-if="product.address"
-            width="100%"
-          />
+        </teleport>
+        <div class="flex flex-col gap-8 md:flex-row">
+          <div class="order-1 w-full md:w-8/12" v-if="product.features">
+            <PageProductLeftSide :features="product.features" />
+          </div>
+          <aside :class="isMobile ? 'order-first' : 'order-2'">
+            <PageProductRightSide
+              :id="product.id"
+              :is-mobile="isMobile"
+              :origin-price="product.origin_price"
+              :price="product.price"
+              :title="product.title"
+            />
+          </aside>
         </div>
-      </NSpace>
-    </NuxtLayout>
-    <div class="bg-cc-other-7/80">
-      <LazySwiperProduct
-        :products="getFilterData(getByRecommended, '', product.category)"
-        title="更多推薦"
-      />
-    </div>
-  </template>
+      </NuxtLayout>
+      <div class="bg-cc-other-7/80 py-5 md:py-10" v-if="product.plans && product.plans?.length !== 0">
+        <LazyPageProductPlans>
+          <template
+            :key="plan.content"
+            v-for="plan in product.plans || []"
+          >
+            <PageProductPlan
+              :content="plan.content"
+              :date="product.date"
+              :id="product.id"
+              :is-loading="isLoading"
+              :is-mobile="isMobile"
+              :origin-price="plan.origin_price"
+              :price="plan.price"
+              :product-title="product.title"
+              :title="plan.title"
+              :unit="product.unit"
+              @add-cart="addCart"
+            />
+          </template>
+        </LazyPageProductPlans>
+      </div>
+      <NuxtLayout class="py-5 md:py-10">
+        <NSpace :size="60" class="w-full md:w-8/12 md:pr-8" vertical>
+          <PageProductContent :content="product.content" v-if="product.content" />
+          <div :class="isMobile ? 'w-full' : 'w-4/5'">
+            <UiTitle title="景點地圖" page />
+            <Embed
+              :address="product.address"
+              :api-key="googleMapApiKey"
+              height="400px"
+              id="map"
+              map-mode="place"
+              v-if="product.address"
+              width="100%"
+            />
+          </div>
+        </NSpace>
+      </NuxtLayout>
+      <div class="bg-cc-other-7/80">
+        <LazySwiperProduct
+          :products="getFilterData(getByRecommended, '', product.category)"
+          title="更多推薦"
+        />
+      </div>
+    </template>
+  </section>
 </template>
 
 <style scoped>

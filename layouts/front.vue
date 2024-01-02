@@ -54,11 +54,11 @@ onMounted(async () => {
 </script>
 
 <template>
-  <section class="flex min-h-screen flex-col font-sans">
+  <div class="flex min-h-screen flex-col font-sans">
     <Header />
     <main class="relative flex flex-1 flex-col items-stretch">
       <slot v-if="isLoad" />
     </main>
     <AppFooter />
-  </section>
+  </div>
 </template>
