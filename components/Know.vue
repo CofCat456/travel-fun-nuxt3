@@ -45,7 +45,9 @@ const productMap = ref<InstanceType<typeof MapProduct>>()
             </h4>
             <p class="flex items-center">
               點擊前往
-              <ChevronRightIcon class="h-8 w-8 transition-transform duration-300 group-hover:translate-x-4" />
+              <NIcon :size="20">
+                <ChevronRightIcon class="transition-transform duration-300 group-hover:translate-x-4" />
+              </NIcon>
             </p>
           </div>
         </div>

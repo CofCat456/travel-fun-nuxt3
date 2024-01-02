@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { FavoriteIcon, FavoriteOutlineIcon, PersonIcon, PersonOutlineIcon } from '~/assets'
+import { FavoriteOutlineIcon, PersonIcon, PersonOutlineIcon } from '~/assets'
 import CartShop from '~/components/Cart/Shop.vue'
-import MenuHamburger from '~/components/Menu/Hamburger.vue'
+import MobileHamburger from '~/components/Mobile/Hamburger.vue'
 import { websiteConfig } from '~/config/website'
 import { fixedHeaderList } from '~/constants'
 
@@ -18,7 +18,7 @@ const { favoriteList } = storeToRefs(favoriteStore)
 const { loginStatus } = storeToRefs(userStore)
 
 const cartRef = ref<InstanceType<typeof CartShop>>()
-const hamBurRef = ref<InstanceType<typeof MenuHamburger>>()
+const hamBurRef = ref<InstanceType<typeof MobileHamburger>>()
 
 const isFixed = computed(() => {
   const regex = new RegExp(fixedHeaderList.join('|'))
@@ -44,7 +44,7 @@ function handleClick(target: string) {
   >
     <NuxtLayout>
       <div class="flex w-full justify-between">
-        <MenuHamburger @active="handleClick" ref="hamBurRef" />
+        <MobileHamburger @active="handleClick" ref="hamBurRef" />
         <div class="flex items-center gap-8 lg:w-[526px]">
           <NuxtLink to="/">
             <NuxtImg :src="websiteConfig.logoImage" alt="logo" class="h-10 object-cover" />
@@ -62,12 +62,11 @@ function handleClick(target: string) {
         <div class="flex items-center justify-between lg:w-[256px]">
           <div class="hidden place-content-center md:grid">
             <NuxtLink :to="{ name: 'wishList' }" class="leading-none">
-              <NIcon class="icon-hover" color="#EE5220" size="24" v-if="favoriteList.length !== 0">
-                <FavoriteIcon />
-              </NIcon>
-              <NIcon class="icon-hover" size="24" v-else>
-                <FavoriteOutlineIcon />
-              </NIcon>
+              <NBadge :max="10" :value="favoriteList.length" color="#EE5220">
+                <NIcon class="icon-hover" color="white" size="24">
+                  <FavoriteOutlineIcon />
+                </NIcon>
+              </NBadge>
             </nuxtlink>
           </div>
           <NuxtLink :to="{ name: 'admin-home' }" v-if="loginStatus" v-slot="{ navigate }" custom>

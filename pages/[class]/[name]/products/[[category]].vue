@@ -133,7 +133,7 @@ onMounted(() => getProducts())
 
 <template>
   <section id="products">
-    <div class="bg-cc-other-7/80 py-2 md:px-6 md:pt-24 bg-cover">
+    <div class="bg-cc-other-7/80 bg-cover py-2 md:px-6 md:pt-24">
       <NuxtLayout>
         <NBreadcrumb separator=">">
           <template :key="title" v-for="{ title, pathName, params } in getBreadcrumbs">
@@ -193,7 +193,9 @@ onMounted(() => getProducts())
               </h6>
               <p class="text-sm-content flex items-center justify-start">
                 點擊前往
-                <ChevronRightIcon class="h-8 w-8 transition-transform duration-300 group-hover:translate-x-4" />
+                <NIcon :size="20">
+                  <ChevronRightIcon class="transition-transform duration-300 group-hover:translate-x-4" />
+                </NIcon>
               </p>
             </div>
           </div>

@@ -36,10 +36,9 @@ function toggleActive() {
 
 const closeActive = () => activate.active = false
 
-// FIX: router
-// onBeforeRouteUpdate(() => {
-//   closeActive()
-// })
+onBeforeRouteUpdate(() => {
+  closeActive()
+})
 
 defineExpose({
   closeActive,
