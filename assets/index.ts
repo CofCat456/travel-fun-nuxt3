@@ -1,4 +1,5 @@
 import ChevronRightIcon from './icons/ChevronRightIcon.vue'
+import CloseIcon from './icons/CloseIcon.vue'
 import ConfirmationNumberOutlineRoundedIcon from './icons/ConfirmationNumberOutlineRoundedIcon.vue'
 import DateRangeOutlineIcon from './icons/DateRangeOutlineIcon.vue'
 import EscalatorWarningIcon from './icons/EscalatorWarningIcon.vue'
@@ -15,6 +16,7 @@ import TableRowsRoundedIcon from './icons/TableRowsRoundedIcon.vue'
 
 export {
   ChevronRightIcon,
+  CloseIcon,
   ConfirmationNumberOutlineRoundedIcon,
   DateRangeOutlineIcon,
   EscalatorWarningIcon,

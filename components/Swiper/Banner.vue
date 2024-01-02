@@ -12,7 +12,14 @@ const props = withDefaults(defineProps<SwiperOptions & {
   speed: 600,
 })
 
-const { goNext, goPrev, isBeginning, isEnd, onSlideChange, onSwiper } = useSwiperInit()
+const {
+  goNext,
+  goPrev,
+  isBeginning,
+  isEnd,
+  onSlideChange,
+  onSwiper,
+} = useSwiperInit()
 
 const getBindValues = computed(() => ({
   breakpoints: {

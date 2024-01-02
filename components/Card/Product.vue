@@ -10,11 +10,13 @@ import { cityMap } from '~/constants'
 
 defineProps<Product & { notRanking?: boolean, ranking?: number }>()
 
+const router = useRouter()
+
 const favoriteStore = useFavoriteStore()
 
 const { addFavorite, checkFavorite, removeFavorite } = favoriteStore
 
-const goProduct = (id: string) => useRouter().push(`/product/${id}`)
+const goProduct = (id: string) => router.push(`/product/${id}`)
 </script>
 
 <template>

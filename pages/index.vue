@@ -1,13 +1,15 @@
 <script lang="ts" setup>
 import { mockHotCitys, mockNews } from '~/constants'
 
+const router = useRouter()
+
 const productStore = useProductStore()
 
 const { getByNewest, getByPopular } = storeToRefs(productStore)
 
 const { getFilterData } = productStore
 
-const goCountry = () => navigateTo({ name: 'country', params: { name: 'taiwan' } })
+const goCountry = () => router.push({ name: 'country-name', params: { name: 'taiwan' } })
 </script>
 
 <template>

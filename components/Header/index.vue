@@ -3,6 +3,7 @@ import { FavoriteIcon, FavoriteOutlineIcon, PersonIcon, PersonOutlineIcon } from
 import CartShop from '~/components/Cart/Shop.vue'
 import MenuHamburger from '~/components/Menu/Hamburger.vue'
 import { websiteConfig } from '~/config/website'
+import { fixedHeaderList } from '~/constants'
 
 import navs from './Navigation'
 
@@ -19,7 +20,11 @@ const { loginStatus } = storeToRefs(userStore)
 const cartRef = ref<InstanceType<typeof CartShop>>()
 const hamBurRef = ref<InstanceType<typeof MenuHamburger>>()
 
-const isFixed = computed(() => new Set(['index', 'city', 'country']).has(route.name!.toString()))
+const isFixed = computed(() => {
+  const regex = new RegExp(fixedHeaderList.join('|'))
+
+  return regex.test(route.name as string || '')
+})
 
 const navListComponent = computed(() => navs.filter(({ component }) => component))
 
