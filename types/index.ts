@@ -13,3 +13,8 @@ export interface UserInfo {
   email: string
   password: string
 }
+
+export enum Class {
+  City = 'city',
+  Country = 'country',
+}

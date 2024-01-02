@@ -53,16 +53,18 @@ const isLoad = ref(false)
 
 const getBreadcrumbs = computed(() => [
   {
+    pathName: 'index',
     title: 'Travel Fun',
-    url: '/',
   },
   {
+    params: { class: 'country', name: 'taiwan' },
+    pathName: 'class-name',
     title: '台灣',
-    url: `/country/taiwan`,
   },
   {
+    params: { class: 'city', name: product?.city },
+    pathName: 'class-name',
     title: cityMap.get(product?.city),
-    url: `/city/${product.city}`,
   },
   {
     title: product?.title,
@@ -99,9 +101,9 @@ onMounted(async () => {
     <template v-if="isLoad">
       <NuxtLayout class="pb-5 md:py-5">
         <NBreadcrumb class="my-2" separator=">">
-          <template :key="title" v-for="{ title, url } in getBreadcrumbs">
-            <NBreadcrumbItem v-if="url">
-              <NuxtLink :to="url">
+          <template :key="title" v-for="{ title, params, pathName } in getBreadcrumbs">
+            <NBreadcrumbItem v-if="pathName">
+              <NuxtLink :to="{ name: pathName, params }">
                 {{ title }}
               </NuxtLink>
             </NBreadcrumbItem>

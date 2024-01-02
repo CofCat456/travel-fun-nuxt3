@@ -66,7 +66,7 @@ function handleSearch() {
       <div class="p-4" v-else>
         <NEmpty description="眼睛業障重">
           <template #extra>
-            <NuxtLink :to="{ name: 'country-name-products-category', params: { name: 'taiwan' } }" v-slot="{ navigate }" custom>
+            <NuxtLink :to="{ name: 'class-name-products-category', params: { class: 'country', name: 'taiwan' } }" v-slot="{ navigate }" custom>
               <NButton @click="navigate" size="small">
                 前往商品頁面
               </NButton>

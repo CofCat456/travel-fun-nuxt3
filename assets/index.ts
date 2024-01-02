@@ -5,7 +5,9 @@ import DateRangeOutlineIcon from './icons/DateRangeOutlineIcon.vue'
 import EscalatorWarningIcon from './icons/EscalatorWarningIcon.vue'
 import FavoriteIcon from './icons/FavoriteIcon.vue'
 import FavoriteOutlineIcon from './icons/FavoriteOutlineIcon.vue'
+import FlightIcon from './icons/FlightIcon.vue'
 import FlightTakeoffIcon from './icons/FlightTakeoffIcon.vue'
+import KeyboardArrowDownIcon from './icons/KeyboardArrowDownIcon.vue'
 import LocationOnIcon from './icons/LocationOnIcon.vue'
 import PersonIcon from './icons/PersonIcon.vue'
 import PersonOutlineIcon from './icons/PersonOutlineIcon.vue'
@@ -22,7 +24,9 @@ export {
   EscalatorWarningIcon,
   FavoriteIcon,
   FavoriteOutlineIcon,
+  FlightIcon,
   FlightTakeoffIcon,
+  KeyboardArrowDownIcon,
   LocationOnIcon,
   PersonIcon,
   PersonOutlineIcon,

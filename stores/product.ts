@@ -37,7 +37,7 @@ const useProductStore = defineStore('product', () => {
     }
   }
 
-  const getFilterData = (array: Product[], city = '', category = '', num = 10) => {
+  const getFilterData = (array: Product[], city: null | string = '', category = '', num = 10) => {
     let newArray = array ? [...array] : []
 
     if (city)

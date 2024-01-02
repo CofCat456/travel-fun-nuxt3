@@ -24,7 +24,7 @@ const otherCity = computed(() => {
       <UiTitle sec-title="探索最熱門的城市，發現更多令人驚嘆的旅程！" title="熱門城市" />
       <div class="grid grid-flow-row grid-cols-4 justify-between gap-3 md:gap-6" v-if="hotCitys">
         <NuxtLink
-          :to="{ name: 'city-name', params: { name: `${mainCity.enName.toLowerCase()}` } }" v-if="mainCity?.name" v-slot="{ navigate }"
+          :to="{ name: 'class-name', params: { class: 'city', name: `${mainCity.enName.toLowerCase()}` } }" v-if="mainCity?.name" v-slot="{ navigate }"
           custom
         >
           <div @click="navigate" class="relative col-span-4 row-span-4 aspect-square overflow-hidden rounded-m md:col-span-2 md:row-span-2 md:aspect-[636/368]">
@@ -45,7 +45,7 @@ const otherCity = computed(() => {
           </div>
         </NuxtLink>
         <NuxtLink
-          :key="city.name" :to="{ name: 'city-name', params: { name: `${city.enName.toLowerCase()}` } }" v-for="city in otherCity" v-slot="{ navigate }"
+          :key="city.name" :to="{ name: 'class-name', params: { class: 'city', name: `${city.enName.toLowerCase()}` } }" v-for="city in otherCity" v-slot="{ navigate }"
           custom
         >
           <div @click="navigate" class="relative col-span-2 aspect-square overflow-hidden rounded-m md:col-span-1 md:aspect-video">

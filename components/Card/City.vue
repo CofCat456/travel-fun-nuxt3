@@ -12,7 +12,7 @@ const getImage = computed(() => `/images/city/city_${props.city}.jpg`)
 
 <template>
   <NuxtLink
-    :to="{ name: 'city-name', params: { name: city } }"
+    :to="{ name: 'class-name', params: { class: 'city', name: city } }"
     class="relative block w-full overflow-hidden rounded-m"
   >
     <div

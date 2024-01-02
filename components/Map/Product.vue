@@ -4,7 +4,7 @@ import type { Coordinates, Product } from '~/types'
 import { GoogleMap, InfoWindow, Marker, MarkerClusterer } from '@voomap/map'
 import { CloseIcon } from '~/assets'
 
-defineProps<{
+const props = defineProps<{
   isMobile: boolean
   products: Product[]
 }>()
@@ -29,6 +29,11 @@ function openMap() {
 function closeMap() {
   showMap.value = false
 }
+
+onMounted(() => {
+  if (props.products && props.products.length > 0)
+    Object.assign(center, props.products[0].coordinates)
+})
 
 defineExpose({
   closeMap,

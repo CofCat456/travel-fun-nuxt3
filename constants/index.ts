@@ -2,8 +2,7 @@ export const copyRight = '此網站僅做為前端 Side Project 作品練習，�
 
 export const fixedHeaderList = [
   'index',
-  'country',
-  'city',
+  'class-name',
 ]
 
 export * from './mockData'

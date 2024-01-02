@@ -9,7 +9,7 @@ const { getByNewest, getByPopular } = storeToRefs(productStore)
 
 const { getFilterData } = productStore
 
-const goCountry = () => router.push({ name: 'country-name', params: { name: 'taiwan' } })
+const goCountry = () => router.push({ name: 'class-name', params: { class: 'country', name: 'taiwan' } })
 </script>
 
 <template>

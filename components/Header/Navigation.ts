@@ -9,8 +9,8 @@ import Area from './Area.vue'
 import Menu from './Menu.vue'
 
 const routerlinkClass = 'flex justify-center items-center gap-2'
-const packageRouterTo = { name: 'country-name-products-category', params: { category: 'package', name: 'taiwan' } }
-const tourRouterTo = { name: 'country-name', params: { name: 'taiwan' } }
+const packageRouterTo = { name: 'class-name-products-category', params: { category: 'package', class: 'country', name: 'taiwan' } }
+const tourRouterTo = { name: 'class-name', params: { class: 'country', name: 'taiwan' } }
 const favoriteRouterTo = { name: 'wishList' }
 
 export const handleItemHeaderClick: CollapseProps['onItemHeaderClick'] = ({

@@ -11,7 +11,7 @@ import { cityData, cityMap, cityPos } from '~/constants/map'
         </p>
         <div class="my-2 flex flex-wrap items-center gap-4">
           <template :key="cityName" v-for="cityName in citys">
-            <NuxtLink :to="{ name: 'city-name', params: { name: cityName } }" v-slot="{ navigate }" custom>
+            <NuxtLink :to="{ name: 'class-name', params: { name: cityName } }" v-slot="{ navigate }" custom>
               <NButton @click="navigate" text>
                 {{ cityMap.get(cityName) }}市
               </NButton>

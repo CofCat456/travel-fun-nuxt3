@@ -33,7 +33,7 @@ export default defineNuxtConfig({
     },
   },
   swiper: {
-    modules: ['navigation'],
+    modules: ['navigation', 'free-mode'],
   },
 })
 
