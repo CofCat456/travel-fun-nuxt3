@@ -22,7 +22,7 @@ const otherCity = computed(() => {
   <div class="bg-cc-other-7/80 pb-6 pt-12 md:pb-20">
     <NuxtLayout>
       <UiTitle sec-title="探索最熱門的城市，發現更多令人驚嘆的旅程！" title="熱門城市" />
-      <div class="grid grid-flow-row grid-cols-4 justify-between gap-3 md:gap-6" v-if="hotCitys">
+      <div class="grid grid-flow-row grid-cols-4 justify-between gap-2 md:gap-4 lg:gap-6" v-if="hotCitys">
         <NuxtLink
           :to="{ name: 'class-name', params: { class: 'city', name: `${mainCity.enName.toLowerCase()}` } }" v-if="mainCity?.name" v-slot="{ navigate }"
           custom

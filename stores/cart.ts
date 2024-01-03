@@ -1,7 +1,6 @@
 import type { Cart } from '../types'
 
 const useCartStore = defineStore('cart', () => {
-  const isLoading = ref(false)
   const cartList = ref<Cart[]>([])
   const total = ref(0)
   const finalTotal = ref(0)
@@ -27,23 +26,33 @@ const useCartStore = defineStore('cart', () => {
   }
 
   const addCart = async (data: { data: Cart }) => {
-    isLoading.value = true
+    await cart.addCart(data)
+    await getCarts()
+  }
 
-    try {
-      await cart.addCart(data)
+  const deleteCart = async (id: string) => {
+    const { data } = await cart.deleteCart(id)
+
+    if (data.value) {
+      const { success } = data.value
+
+      if (success)
+        getCarts()
     }
-    finally {
-      await getCarts()
-      isLoading.value = false
-    }
+  }
+
+  const deleteAllCart = async () => {
+    await cart.deleteAllCart()
+    await getCarts()
   }
 
   return {
     addCart,
     cartList,
+    deleteAllCart,
+    deleteCart,
     finalTotal,
     getCarts,
-    isLoading,
     total,
     totalNum,
   }

@@ -1,7 +1,7 @@
 import { successMsg } from '~/plugins/sweetMsg'
 
 const useFavoriteStore = defineStore('favorite', () => {
-  const favoriteList = useLocalStorage<string[]>('favorites', ['NmRVyCkEYKcbj9XppvZ'])
+  const favoriteList = useLocalStorage<string[]>('favorites', [])
 
   const addFavorite = (id: string, title: string) => {
     favoriteList.value.push(id)

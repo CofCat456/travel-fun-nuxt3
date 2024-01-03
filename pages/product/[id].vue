@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { Product } from '~/types'
+import type { Cart, Product } from '~/types'
 
 import { Embed } from '@voomap/map'
 import { cityMap } from '~/constants/map'
@@ -16,7 +16,6 @@ const route = useRoute()
 const cartStore = useCartStore()
 const productStore = useProductStore()
 
-const { isLoading } = storeToRefs(cartStore)
 const { getByRecommended } = storeToRefs(productStore)
 
 const { addCart } = cartStore
@@ -50,6 +49,7 @@ const product: Product = reactive({
 const id = ref(route.params.id as string)
 const bannerRef = ref<HTMLElement>()
 const isLoad = ref(false)
+const isLoading = ref(false)
 
 const getBreadcrumbs = computed(() => [
   {
@@ -85,6 +85,17 @@ async function getProduct() {
   }
   finally {
     loadingBar.finish()
+  }
+}
+
+async function onAddCart(data: { data: Cart }) {
+  isLoading.value = true
+
+  try {
+    await addCart(data)
+  }
+  finally {
+    isLoading.value = false
   }
 }
 
@@ -172,7 +183,7 @@ onMounted(async () => {
               :product-title="product.title"
               :title="plan.title"
               :unit="product.unit"
-              @add-cart="addCart"
+              @add-cart="onAddCart"
             />
           </template>
         </LazyPageProductPlans>

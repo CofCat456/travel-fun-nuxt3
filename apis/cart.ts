@@ -31,8 +31,6 @@ export async function getCarts(option?: HttpOption<ResponseData>) {
  * TEST: Not Test
  */
 export async function addCart(data: any) {
-  // TODO: Define Data Type
-  console.log(data)
   return await useHttp.post(CartApi.Cart, data)
 }
 

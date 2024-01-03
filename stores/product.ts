@@ -54,7 +54,7 @@ const useProductStore = defineStore('product', () => {
     const { data } = res
 
     if (data.value) {
-      const { products, success } = data.value
+      const { products = [], success } = data.value
 
       if (success)
         productList.value = products

@@ -14,6 +14,7 @@ const props = withDefaults(defineProps<TitleProps & SwiperOptions & {
 }>(), {
   btn: () => ({ pathName: '', text: '' }),
   loop: true,
+  products: () => [],
   slidesPerGroup: 6,
   slidesPerView: 6,
   spaceBetween: 24,
