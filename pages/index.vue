@@ -1,6 +1,7 @@
 <script lang="ts" setup>
-const productStore = useProductStore()
 import { mockHotCitys, mockNews } from '~/constants'
+
+const productStore = useProductStore()
 
 const router = useRouter()
 

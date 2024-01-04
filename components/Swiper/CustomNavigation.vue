@@ -20,7 +20,7 @@ defineEmits<{
   <button
     :class="[
       isBeginning && 'md:hidden',
-      isNormal ? 'left-3 opacity-60' : 'left-0 translate-x-4 lg:translate-x-full',
+      isNormal ? 'left-3 opacity-60' : 'left-0 translate-x-4 lg:-translate-x-full',
       isProduct && 'swiper-product-btn ',
     ]"
     @click="$emit('goPrev')"

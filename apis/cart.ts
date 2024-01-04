@@ -8,6 +8,7 @@ import type { Cart } from '~/types'
 enum CartApi {
   Cart = 'cart',
   Carts = 'carts',
+  Coupon = 'coupon',
 }
 
 interface ResponseData {
@@ -15,6 +16,12 @@ interface ResponseData {
     carts: Cart[]
     final_total: number
     total: number
+  }
+}
+
+interface CouponRes {
+  data: {
+    final_total: number
   }
 }
 
@@ -31,6 +38,7 @@ export async function getCarts(option?: HttpOption<ResponseData>) {
  * TEST: Not Test
  */
 export async function addCart(data: any) {
+  // TODO: data type
   return await useHttp.post(CartApi.Cart, data)
 }
 
@@ -47,4 +55,13 @@ export async function deleteCart(id: string) {
  */
 export async function deleteAllCart() {
   return await useHttp.delete(`${CartApi.Carts}`)
+}
+
+/**
+ * @description 套用優惠卷
+ */
+export async function useCoupon(data: { data: {
+  code: string
+} }, option?: HttpOption<CouponRes>) {
+  return await useHttp.post(CartApi.Coupon, data, option)
 }

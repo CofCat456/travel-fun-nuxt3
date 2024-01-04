@@ -22,7 +22,8 @@ const doneBreadcrumbs = [
   },
 ]
 
-const getStep = computed(() => route.name)
+const getStep = computed(() => route.name as string)
+const isDone = computed(() => getStep.value.includes('done'))
 
 const getBreadcrumbs = computed(() => {
   const breadcrumbs = [
@@ -35,10 +36,10 @@ const getBreadcrumbs = computed(() => {
   if (getStep.value === 'booking-order')
     return [...breadcrumbs, ...orderBreadcrumbs]
 
-  if (getStep.value === 'booking-pay')
+  if (getStep.value === 'booking-pay-id')
     return [...breadcrumbs, ...orderBreadcrumbs, ...payBreadcrumbs]
 
-  if (getStep.value === 'booking-done')
+  if (getStep.value === 'booking-done-id')
     return [...breadcrumbs, ...orderBreadcrumbs, ...payBreadcrumbs, ...doneBreadcrumbs]
 
   return breadcrumbs
@@ -46,9 +47,8 @@ const getBreadcrumbs = computed(() => {
 </script>
 
 <template>
-  <section class="bg-cc-other-7/80 py-4 flex-1">
-    123
-    <NuxtLayout :size="getStep === 'Done' ? 'sm' : 'md'">
+  <section class="flex-1 bg-cc-other-7/80 py-4">
+    <NuxtLayout :size="isDone ? 'sm' : 'md'">
       <NBreadcrumb separator=">">
         <template :key="title" v-for="{ title, pathName } in getBreadcrumbs">
           <NBreadcrumbItem v-if="pathName">
@@ -61,7 +61,7 @@ const getBreadcrumbs = computed(() => {
           </NBreadcrumbItem>
         </template>
       </NBreadcrumb>
-      <div :class="getStep === 'Done' ? 'flex-col' : 'flex-col md:flex-row'" class="flex md:items-baseline gap-6 pt-4">
+      <div :class="isDone ? 'flex-col' : 'flex-col md:flex-row'" class="flex gap-6 pt-4 md:items-baseline">
         <NuxtPage />
       </div>
     </NuxtLayout>
