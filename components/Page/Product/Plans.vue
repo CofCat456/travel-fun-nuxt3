@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import type { Cart } from '~/types'
 
 defineEmits<{
@@ -19,10 +19,11 @@ defineEmits<{
 
 <style scoped>
 #plan :deep(.n-list) {
-  @apply space-y-10 bg-transparent;
+  @apply space-y-10;
+  background-color: theme('colors.transparent');
 }
 
 #plan :deep(.n-list-item) {
-  @apply bg-cc-other-1;
+  background-color: theme('colors.cc.other-1');
 }
 </style>

@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import type { AffixProps } from 'naive-ui'
 
 import { FavoriteIcon, FavoriteOutlineIcon } from '~/assets'

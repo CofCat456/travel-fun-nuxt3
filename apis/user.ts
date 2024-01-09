@@ -6,7 +6,7 @@ import type { HttpOption } from '~/composables/useHttp'
 
 export enum UserApi {
   Logout = 'logout',
-  Signin = 'admin/signin',
+  Sign = 'admin/signin',
 }
 
 interface SigninRes {
@@ -21,8 +21,8 @@ interface SigninRes {
  * @param body.password
  * @description 用戶登入
  */
-export async function signin(body: any, option?: HttpOption<SigninRes>) {
-  return await useHttp.post(UserApi.Signin, body, option)
+export async function sign(body: any, option?: HttpOption<SigninRes>) {
+  return await useHttp.post(UserApi.Sign, body, option)
 }
 
 /**

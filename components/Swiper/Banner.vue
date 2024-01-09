@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import type { SwiperOptions } from 'swiper/types'
 
 const props = withDefaults(defineProps<SwiperOptions & {
@@ -40,7 +40,7 @@ const getBindValues = computed(() => ({
       speed: props.speed,
     },
   },
-  modules: [SwiperNavigation],
+  modules: [SwiperNavigation, SwiperPagination],
 }))
 
 function pagination() {
@@ -79,10 +79,21 @@ function pagination() {
 
 <style scoped>
 :deep(.swiper-pagination-bullet) {
-  @apply h-2 w-2 border border-cc-other-1 bg-cc-other-1/30 opacity-70 hover:opacity-90;
+  width: theme('width.2');
+  height: theme('height.2');
+  border-width: theme('borderWidth.DEFAULT');
+  border-color: theme('borderColor.cc.other-1');
+  background-color: theme('colors.cc.other-1/30');
+  opacity: theme('opacity.70');
+
+  &:hover {
+    opacity: theme('opacity.90');
+  }
 }
 
 :deep(.swiper-pagination-bullet-active) {
-  @apply scale-150 border-cc-other-1 bg-cc-other-1;
+  scale: theme('scale.150');
+  border-color: theme('colors.cc.other-1');
+  background-color: theme('colors.cc.other-1');
 }
 </style>

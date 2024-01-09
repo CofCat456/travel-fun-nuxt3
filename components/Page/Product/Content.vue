@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 defineProps<{
   content: string
 }>()
@@ -11,18 +11,26 @@ defineProps<{
 
 <style scoped>
 .content :deep(p) {
-  @apply text-base leading-normal;
+  font-size: theme('fontSize.base');
+  line-height: theme('lineHeight.normal');
 }
 
 .content :deep(.image) {
-  @apply my-3;
+  margin-top: theme('margin.3');
+  margin-bottom: theme('margin.3');
 }
 
 .content :deep(img) {
-  @apply h-auto max-w-full rounded-m object-cover;
+  height: theme('height.auto');
+  max-width: theme('width.full');
+  border-radius: theme('borderRadius.m');
+  object-fit: cover;
 }
 
 .content :deep(figcaption) {
-  @apply mt-2 text-sm leading-normal text-cc-other-3;
+  margin-top: theme('margin.2');
+  font-size: theme('fontSize.sm');
+  line-height: theme('lineHeight.normal');
+  color: theme('colors.cc.other-3');
 }
 </style>

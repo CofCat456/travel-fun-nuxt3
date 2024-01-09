@@ -57,7 +57,7 @@ function fetch<T>(url: UrlType, option: HttpOption<T>) {
       // 添加baseURL,nuxt3环境变量要从useRuntimeConfig里面取
       const { public: { apiBase, apiSecret } } = useRuntimeConfig()
 
-      if (url === UserApi.Signin || url === UserApi.Logout)
+      if (url === UserApi.Sign || url === UserApi.Logout)
         options.baseURL = apiBase
       else
         options.baseURL = `${apiBase}/api/${apiSecret}`

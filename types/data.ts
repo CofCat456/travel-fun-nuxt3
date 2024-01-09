@@ -32,7 +32,7 @@ export interface Cart {
   buy_date: number
   coupon_code?: string
   final_total?: number
-  id: string
+  id?: string
   product?: Product
   product_id: string
   qty: number

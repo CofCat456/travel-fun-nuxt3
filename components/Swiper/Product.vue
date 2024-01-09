@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import type { TitleProps } from '~/components/Ui/Title.vue'
 import type { Product } from '~/types'
 import type { SwiperOptions } from 'swiper/types'

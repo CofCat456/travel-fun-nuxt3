@@ -14,11 +14,11 @@ const useUserStore = defineStore('user', () => {
     : null)
 
 
-  const signin = async (userData: UserInfo) => {
+  const sign = async (userData: UserInfo) => {
     isLoading.value = true
 
     try {
-      const res = await user.signin(userData)
+      const res = await user.sign(userData)
       const { data } = res
 
       if (data.value) {
@@ -27,7 +27,7 @@ const useUserStore = defineStore('user', () => {
         if (success) {
           document.cookie = `token=${token};expires=${new Date(expired)};`
           loginStatus.value = true
-          navigateTo({ name: 'AdminHome' })
+          // navigateTo({ name: 'admin-home' })
         }
       }
     }
@@ -58,7 +58,7 @@ const useUserStore = defineStore('user', () => {
     }
   }
 
-  return { getToken, isLoading, loginStatus, logout, signin }
+  return { getToken, isLoading, loginStatus, logout, sign }
 })
 
 export default useUserStore

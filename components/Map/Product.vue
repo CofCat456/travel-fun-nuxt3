@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import type { Coordinates, Product } from '~/types'
 
 import { GoogleMap, InfoWindow, Marker, MarkerClusterer } from '@voomap/map'
@@ -90,8 +90,8 @@ defineExpose({
         disable-default-u-i
       >
         <MarkerClusterer>
-          <Marker :key="id" :position="coordinates" v-for="{ id, coordinates, title } in products">
-            <InfoWindow>
+          <Marker :key="id" :position="coordinates" v-for="({ id, coordinates, title }, length) in products">
+            <InfoWindow :initial-state="length === 0">
               <div class="p-3">
                 {{ title }}
               </div>

@@ -1,9 +1,9 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import type { Sort } from '~/types'
 
 defineProps<{
   isCity: boolean
-  currEnTarget: string
+  currName: string
   array: Record<string, string>[]
   currSort: string
   sortArray: Record<string, Sort>[]
@@ -13,7 +13,6 @@ defineEmits<{
   'update:params': [city: string]
   'update:sort': [item: Sort]
   openMap: []
-
 }>()
 </script>
 
@@ -31,7 +30,7 @@ defineEmits<{
             <NThing content-indented>
               <template #avatar>
                 <svg
-                  :class="key === currEnTarget ? 'opacity-100' : 'opacity-0'"
+                  :class="key === currName ? 'opacity-100' : 'opacity-0'"
                   class="h-5 w-5 text-cc-accent"
                   fill="none" stroke="currentColor"
                   stroke-width="1.5"

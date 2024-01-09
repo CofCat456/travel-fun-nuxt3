@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import type { Sort } from '~/types'
 import type { SelectMixedOption } from 'naive-ui/es/select/src/interface'
 

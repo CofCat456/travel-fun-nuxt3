@@ -1,10 +1,9 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { mockHotCitys, mockNews } from '~/constants'
 
 const productStore = useProductStore()
 
 const router = useRouter()
-
 
 const { getByNewest, getByPopular } = storeToRefs(productStore)
 

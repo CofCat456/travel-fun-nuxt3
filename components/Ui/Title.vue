@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 export interface TitleProps {
   page?: boolean
   secTitle?: string

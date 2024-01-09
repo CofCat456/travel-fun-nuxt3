@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import type { DrawerActive } from '@/types'
 
 import { ChevronRightIcon, TableRowsRoundedIcon } from '~/assets'

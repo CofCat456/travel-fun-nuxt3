@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import type { Cart, DrawerActive } from '~/types'
 
 import { DateRangeOutlineIcon } from '~/assets'
@@ -272,10 +272,13 @@ function disablePreviousDate(ts: number) {
 
 <style scoped>
 :deep(.list) > ul {
-  @apply list-disc pl-6 text-base tracking-wide;
+  list-style-type: theme('listStyleType.disc');
+  padding-right: theme('padding.6');
+  font-size: theme('fontSize.base');
+  letter-spacing: theme('letterSpacing.wide');
 }
 
 :deep(.list li) {
-  @apply py-1;
+  padding: theme('padding.1') 0;
 }
 </style>

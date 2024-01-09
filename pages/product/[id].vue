@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import type { Cart, Product } from '~/types'
 
 import { Embed } from '@voomap/map'

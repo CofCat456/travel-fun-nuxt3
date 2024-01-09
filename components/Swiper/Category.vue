@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import type { SwiperOptions } from 'swiper/types'
 
 const props = withDefaults(defineProps<SwiperOptions & {

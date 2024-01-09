@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { websiteConfig } from '~/config/website'
 import { copyRight } from '~/constants'
 </script>

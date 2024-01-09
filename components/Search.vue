@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { LocationOnIcon } from '~/assets'
 import { cityMap } from '~/constants'
 

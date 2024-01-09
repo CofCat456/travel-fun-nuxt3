@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { ChevronRightIcon, FlightIcon } from '~/assets'
 import MapProduct from '~/components/Map/Product.vue'
 import { categoryMap, cityMap, countryMap, sortMap } from '~/constants'
@@ -167,7 +167,7 @@ onMounted(() => getProducts())
     </div>
     <MobileFilter
       :array="isCity ? getEnCitys : getEnCountrys"
-      :curr-en-target="className"
+      :curr-name="name"
       :curr-sort="sort"
       :is-city="isCity"
       :sort-array="getFilterList"
@@ -218,7 +218,7 @@ onMounted(() => getProducts())
         </div>
         <main class="flex flex-1 flex-col">
           <h6 class="mb-4 font-medium" v-if="isMobile">
-            {{ className }} {{ getCategory }}
+            {{ chName }} {{ getCategory }}
             {{ `(${getProductList.length})` }}
           </h6>
           <UiFilter
@@ -245,10 +245,10 @@ onMounted(() => getProducts())
 
 <style scoped>
 :deep(.swiper-category-custom-prev) {
-  @apply -left-5;
+  left: -theme('space.5');
 }
 
 :deep(.swiper-category-custom-next) {
-  @apply -right-5;
+  right: -theme('space.5');
 }
 </style>

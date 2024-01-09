@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { FavoriteOutlineIcon, PersonIcon, PersonOutlineIcon } from '~/assets'
 import CartShop from '~/components/Cart/Shop.vue'
 import MobileHamburger from '~/components/Mobile/Hamburger.vue'
@@ -44,7 +44,9 @@ function handleClick(target: string) {
   >
     <NuxtLayout>
       <div class="flex w-full justify-between">
-        <MobileHamburger @active="handleClick" ref="hamBurRef" />
+        <ClientOnly>
+          <MobileHamburger @active="handleClick" ref="hamBurRef" />
+        </ClientOnly>
         <div class="flex items-center gap-8 lg:w-[526px]">
           <NuxtLink to="/">
             <NuxtImg :src="websiteConfig.logoImage" alt="logo" class="h-10 object-cover" />
