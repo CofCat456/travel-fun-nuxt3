@@ -52,6 +52,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@bg-dev/nuxt-naiveui',
     '@vueuse/nuxt',
+    'nuxt-simple-sitemap',
   ],
   runtimeConfig: {
     public: {
