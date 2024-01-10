@@ -129,6 +129,12 @@ function updateSort(item: Sort) {
 }
 
 onMounted(() => getProducts())
+
+
+useSeoMeta({
+  description: `探索${chName.value}之美，我們提供獨家行程、精選景點門票。旅遊趣助您輕鬆暢遊，發現${chName.value}獨特風情。開啟美好旅程，感受城市之魅！`,
+  title: `${new Date().getFullYear()} ${chName.value}旅遊行程`,
+})
 </script>
 
 <template>

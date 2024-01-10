@@ -6,17 +6,25 @@ const { isMobile } = useDevice()
 const { favoriteList } = storeToRefs(favoriteStore)
 const { productList } = storeToRefs(productStore)
 
+const title = '我的收藏'
+
 const getBreadcrumbs = computed(() => [
   {
     pathName: 'index',
     title: '首頁',
   },
   {
-    title: '我的收藏',
+    title,
   },
 ])
 
 const getFavoriteProductList = computed(() => productList.value.filter(({ id }) => favoriteList.value.includes(id)))
+
+
+useSeoMeta({
+  description: '收藏您個人的旅遊行程',
+  title,
+})
 </script>
 
 <template>

@@ -41,6 +41,11 @@ function onSubmit() {
       await userStore.sign({ ...userValue.value })
   })
 }
+
+useSeoMeta({
+  description: '登入',
+  title: '登入',
+})
 </script>
 
 <template>

@@ -37,6 +37,7 @@ const getThemeOverrides = computed(() => {
       <NMessageProvider>
         <NDialogProvider>
           <NuxtLayout name="front">
+            <NuxtLoadingIndicator color="#EE5220" />
             <NuxtPage />
           </NuxtLayout>
         </NDialogProvider>

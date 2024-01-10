@@ -12,8 +12,6 @@ const router = useRouter()
 
 const { booking } = useApi()
 
-const loadingBar = useLoadingBar()
-
 const id = route.params.id as string
 
 const total = ref(0)
@@ -49,31 +47,32 @@ const rules = computed<FormRules>(() => ({
 }))
 
 async function getOrder() {
-  loadingBar.start()
+  const { data } = await booking.getOrder(id)
 
-  try {
-    const { data } = await booking.getOrder(id)
+  if (data.value) {
+    const { order, success } = data.value
 
-    if (data.value) {
-      const { order, success } = data.value
+    if (success) {
+      const { is_paid } = order
 
-      if (success) {
-        const { is_paid } = order
-
-        if (is_paid) {
-          $errorMsg('此訂單已經付款')
+      if (is_paid) {
+        $errorMsg('此訂單已經付款')
+        setTimeout(() => {
           router.go(-1)
-        }
+        }, 1600)
+      }
 
-        if (order.total) {
-          total.value = order.total
-          finalTotal.value = order.total
-        }
+      if (order.total) {
+        total.value = order.total
+        finalTotal.value = order.total
       }
     }
   }
-  finally {
-    loadingBar.finish()
+  else {
+    $errorMsg('此訂單不存在')
+    setTimeout(() => {
+      router.go(-1)
+    }, 1600)
   }
 }
 

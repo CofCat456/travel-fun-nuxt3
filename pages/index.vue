@@ -10,6 +10,13 @@ const { getByNewest, getByPopular } = storeToRefs(productStore)
 const { getFilterData } = productStore
 
 const goCountry = () => router.push({ name: 'class-name', params: { class: 'country', name: 'taiwan' } })
+
+const description = '旅遊趣是一個帶你享受旅行、體驗生活的好夥伴，在這裡你可已看到台灣各地的旅遊行程和景點門票，準備好一起跟著旅遊趣啟航了嗎！'
+
+useSeoMeta({
+  description,
+  ogDescription: description,
+})
 </script>
 
 <template>

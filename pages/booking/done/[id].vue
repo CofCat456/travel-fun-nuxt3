@@ -3,13 +3,14 @@ import type { Order } from '~/types'
 
 import { DateRangeOutlineIcon, PersonIcon } from '~/assets'
 
+const { $errorMsg } = useNuxtApp()
+
 const route = useRoute()
+const router = useRouter()
 
 const { booking } = useApi()
 
 const productStore = useProductStore()
-
-const loadingBar = useLoadingBar()
 
 const { isMobile } = useDevice()
 const { getByRecommended } = storeToRefs(productStore)
@@ -37,20 +38,19 @@ const orderValue: Order = reactive({
 const getResultDesc = computed(() => `訂單明細將寄至： ${orderValue.user.email}`)
 
 async function getOrder() {
-  loadingBar.start()
+  const { data } = await booking.getOrder(route.params.id as string)
 
-  try {
-    const { data } = await booking.getOrder(route.params.id as string)
+  if (data.value) {
+    const { order, success } = data.value
 
-    if (data.value) {
-      const { order, success } = data.value
-
-      if (success)
-        Object.assign(orderValue, order)
-    }
+    if (success)
+      Object.assign(orderValue, order)
   }
-  finally {
-    loadingBar.finish()
+  else {
+    $errorMsg('此訂單不存在')
+    setTimeout(() => {
+      router.go(-1)
+    }, 1600)
   }
 }
 

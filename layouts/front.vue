@@ -1,37 +1,30 @@
 <script lang="ts" setup>
+const route = useRoute()
+
 const cartStore = useCartStore()
 const productStore = useProductStore()
 
-const loadingBar = useLoadingBar()
+await useLazyAsyncData('initial-product', async () => {
+  const [productsRes, cartsRes] = await Promise.all([
+    productStore.getProducts(),
+    cartStore.getCarts(),
+  ])
 
-const isLoad = ref(false)
+  return { cartsRes, productsRes }
+})
 
-async function getInitialData() {
-  try {
-    const { pending } = await useAsyncData('initial-product', async () => {
-      const [productsRes, cartsRes] = await Promise.all([
-        productStore.getProducts(),
-        cartStore.getCarts(),
-      ])
-
-      return { cartsRes, productsRes }
-    })
-
-    if (pending.value === false)
-      isLoad.value = true
-  }
-  catch {
-    loadingBar.error()
-  }
-  finally {
-    loadingBar.finish()
-  }
-}
-
-onMounted(async () => {
-  loadingBar.start()
-  await nextTick()
-  getInitialData()
+useHead({
+  meta: [
+    {
+      content: `${route.meta.title} - Travel Fun`,
+      property: 'og:title',
+    },
+  ],
+  titleTemplate: (title) => {
+    return title
+      ? `${title} - Travel Fun`
+      : '旅遊趣 Travel Fun'
+  },
 })
 </script>
 
@@ -39,7 +32,7 @@ onMounted(async () => {
   <div class="flex min-h-screen flex-col font-sans">
     <Header />
     <main class="relative flex flex-1 flex-col items-stretch">
-      <slot v-if="isLoad" />
+      <slot />
     </main>
     <AppFooter />
   </div>

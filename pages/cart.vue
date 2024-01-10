@@ -11,6 +11,8 @@ const { getByRecommended } = storeToRefs(productStore)
 const { getFilterData } = productStore
 const { deleteAllCart, getCarts } = cartStore
 
+const title = '購物車'
+
 const isLoading = ref(false)
 
 const getBreadcrumbs = computed(() => [
@@ -19,7 +21,7 @@ const getBreadcrumbs = computed(() => [
     title: '首頁',
   },
   {
-    title: '購物車',
+    title,
   },
 ])
 
@@ -34,6 +36,11 @@ async function onDelAllCart() {
     isLoading.value = false
   }
 }
+
+useSeoMeta({
+  description: title,
+  title,
+})
 </script>
 
 <template>

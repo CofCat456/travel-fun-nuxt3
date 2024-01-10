@@ -1,5 +1,37 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  app: {
+    head: {
+      link: [
+        {
+          href: '/favicon_io/favicon.ico',
+          rel: 'icon',
+          type: 'image/x-icon',
+        },
+        {
+          href: '/favicon_io/apple-touch-icon.png',
+          rel: 'apple-touch-icon',
+          sizes: '180x180',
+        },
+        {
+          href: '/favicon_io/favicon-32x32.png',
+          rel: 'icon',
+          sizes: '32x32',
+          type: 'image/png',
+        },
+        {
+          href: '/favicon_io/favicon-16x16.png',
+          rel: 'icon',
+          sizes: '16x16',
+          type: 'image/png',
+        },
+        {
+          href: '/favicon_io/site.webmanifest',
+          rel: 'manifest',
+        },
+      ],
+    },
+  },
   css: [
     '~/assets/css/main.css',
   ],

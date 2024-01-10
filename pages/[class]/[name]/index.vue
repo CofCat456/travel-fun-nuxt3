@@ -2,10 +2,6 @@
 import { cityMap, countryMap } from '~/constants'
 import { Class } from '~/types'
 
-definePageMeta({
-  middleware: ['check-class'],
-})
-
 const route = useRoute()
 const router = useRouter()
 
@@ -66,6 +62,15 @@ function goProducts() {
     params: { class: getCurrClass.value, name: route.params.name },
   })
 }
+
+definePageMeta({
+  middleware: ['check-class'],
+})
+
+useSeoMeta({
+  description: `探索${getClassName.value}之美，我們提供獨家行程、精選景點門票。旅遊趣助您輕鬆暢遊，發現${getClassName.value}獨特風情。開啟美好旅程，感受城市之魅！`,
+  title: `${new Date().getFullYear()} ${getClassName.value}旅遊行程`,
+})
 </script>
 
 <template>

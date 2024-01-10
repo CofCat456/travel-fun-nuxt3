@@ -15,7 +15,7 @@ const router = useRouter()
 
 const { booking, cart } = useApi()
 
-const { cartList, finalTotal, total } = storeToRefs(cartStore)
+const { finalTotal, total, totalNum } = storeToRefs(cartStore)
 
 const { getCarts } = cartStore
 
@@ -59,8 +59,6 @@ const rules = computed<FormRules>(() => ({
     },
   },
 }))
-
-const checkCartClean = computed(() => cartList.value.length === 0)
 
 const options = computed(() =>
   ['@gmail.com'].map((suffix) => {
@@ -131,7 +129,7 @@ function onSubmit() {
 }
 
 onMounted(() => {
-  if (checkCartClean.value) {
+  if (totalNum.value === 0) {
     $errorMsg('購物車內無資料')
     router.go(-1)
   }

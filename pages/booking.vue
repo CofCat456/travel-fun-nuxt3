@@ -1,48 +1,60 @@
 <script setup lang="ts">
 const route = useRoute()
 
-const orderBreadcrumbs = [
-  {
-    pathName: '',
-    title: '填寫訂單資料',
-  },
-]
+interface Breadcrumb {
+  pathName: string
+  title: string
+}
 
-const payBreadcrumbs = [
-  {
-    pathName: '',
-    title: '付款',
-  },
-]
+const orderBreadcrumbs: Breadcrumb = {
+  pathName: '',
+  title: '填寫訂單資料',
+}
 
-const doneBreadcrumbs = [
-  {
-    pathName: '',
-    title: '訂購完成',
-  },
-]
+const payBreadcrumbs: Breadcrumb = {
+  pathName: '',
+  title: '付款',
+}
+
+const doneBreadcrumbs: Breadcrumb = {
+  pathName: '',
+  title: '訂購完成',
+}
 
 const getStep = computed(() => route.name as string)
+const getCurrBreadcrumb = computed<Breadcrumb | null>(() => {
+  switch (getStep.value) {
+    case 'booking-order':
+      return orderBreadcrumbs
+    case 'booking-pay-id':
+      return payBreadcrumbs
+    case 'booking-done-id':
+      return doneBreadcrumbs
+    default:
+      return null
+  }
+})
 const isDone = computed(() => getStep.value.includes('done'))
 
-const getBreadcrumbs = computed(() => {
-  const breadcrumbs = [
-    {
-      pathName: 'cart',
-      title: '購物車',
-    },
-  ]
+const getBreadcrumbs = computed<Breadcrumb[]>(() => {
+  const defaultBreadcrumb: Breadcrumb = {
+    pathName: 'cart',
+    title: '購物車',
+  }
 
-  if (getStep.value === 'booking-order')
-    return [...breadcrumbs, ...orderBreadcrumbs]
+  if (getCurrBreadcrumb.value)
+    return [defaultBreadcrumb, getCurrBreadcrumb.value]
 
-  if (getStep.value === 'booking-pay-id')
-    return [...breadcrumbs, ...orderBreadcrumbs, ...payBreadcrumbs]
+  return [defaultBreadcrumb]
+})
 
-  if (getStep.value === 'booking-done-id')
-    return [...breadcrumbs, ...orderBreadcrumbs, ...payBreadcrumbs, ...doneBreadcrumbs]
+definePageMeta({
+  middleware: ['check-booking'],
+})
 
-  return breadcrumbs
+useSeoMeta({
+  description: getCurrBreadcrumb.value?.title ?? '',
+  title: getCurrBreadcrumb.value?.title ?? '',
 })
 </script>
 
