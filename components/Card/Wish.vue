@@ -1,12 +1,10 @@
 <script setup lang="ts">
 import type { Product } from '@/types'
 
-import {
-  DateRangeOutlineIcon,
-  FavoriteIcon,
-  LocationOnIcon,
-} from '~/assets'
 import { cityMap } from '~/constants'
+import IconDateRangeOutlineRounded from '~icons/material-symbols/date-range-outline-rounded'
+import IconFavoriteRounded from '~icons/material-symbols/favorite-rounded'
+import IconLocationOnOutlineRounded from '~icons/material-symbols/location-on-outline-rounded'
 
 defineProps<Product>()
 
@@ -24,7 +22,7 @@ const goProduct = (id: string) => router.push(`/product/${id}`)
     <template #header-extra>
       <NButton @click.stop="removeFavorite(id, title)" text>
         <NIcon class="icon-hover" color="#EE5220" size="24">
-          <FavoriteIcon />
+          <IconFavoriteRounded />
         </NIcon>
       </NButton>
     </template>
@@ -50,13 +48,13 @@ const goProduct = (id: string) => router.push(`/product/${id}`)
       <div class="flex items-center gap-3">
         <div class="inline-flex text-cc-other-4 items-center gap-1">
           <NIcon :size="20">
-            <LocationOnIcon />
+            <IconLocationOnOutlineRounded />
           </NIcon>
           {{ cityMap.get(city) }}
         </div>
         <div class="inline-flex text-cc-other-4 items-center gap-1">
           <NIcon :size="20">
-            <DateRangeOutlineIcon />
+            <IconDateRangeOutlineRounded />
           </NIcon>
           可預訂時間：<NTime :time="date" format="yyyy 年 MM 月 dd 日" />
         </div>

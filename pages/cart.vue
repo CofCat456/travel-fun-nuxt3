@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ChevronRightIcon } from '~/assets'
+import IconChevronRight from '~icons/material-symbols/chevron-right'
 
 const cartStore = useCartStore()
 const productStore = useProductStore()
@@ -97,7 +97,7 @@ useSeoMeta({
           繼續購物
           <template #icon>
             <NIcon size="24">
-              <ChevronRightIcon />
+              <IconChevronRight />
             </NIcon>
           </template>
         </NButton>

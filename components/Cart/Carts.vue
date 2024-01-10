@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Cart } from '~/types'
 
-import { CloseIcon } from '~/assets'
+import IconCloseRounded from '~icons/material-symbols/close-rounded'
 
 defineProps<{
   cartList?: Cart[]
@@ -32,7 +32,7 @@ async function onDeleteCart(id: string) {
   <NGrid :cols="8" responsive="screen" x-gap="16" y-gap="8" item-responsive>
     <template
       :key="id"
-      v-for="{ id, product, buy_date, final_total } in cartList"
+      v-for="{ id = '', product, buy_date, final_total } in cartList"
     >
       <NGi span="0 m:1">
         <NuxtLink :to="{ name: 'product-id', params: { id: product?.id } }">
@@ -66,7 +66,7 @@ async function onDeleteCart(id: string) {
           <template #trigger>
             <NButton :disabled="curDelId !== ''" :loading="curDelId === id" @click="onDeleteCart(id)" text>
               <NIcon size="24">
-                <CloseIcon />
+                <IconCloseRounded />
               </NIcon>
             </NButton>
           </template>

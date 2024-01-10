@@ -2,7 +2,7 @@
 import type { Cart, DrawerActive } from '~/types'
 import type { TooltipProps } from 'naive-ui'
 
-import { ShoppingCartIcon, ShoppingCartOutlineIcon } from '~/assets'
+import IconShoppingCartRounded from '~icons/material-symbols/shopping-cart-rounded'
 
 type TooltipThemeOverrides = NonNullable<TooltipProps['themeOverrides']>
 
@@ -61,7 +61,7 @@ defineExpose({
     <template #trigger>
       <NBadge :max="10" :value="totalNum" color="#EE5220">
         <NIcon class="cursor-pointer" color="white" size="24">
-          <ShoppingCartOutlineIcon />
+          <IconShoppingCartRounded />
         </NIcon>
       </NBadge>
     </template>
@@ -118,7 +118,7 @@ defineExpose({
     <NButton @click="toggleActive" text>
       <NBadge :max="10" :value="totalNum" color="#EE5220">
         <NIcon class="cursor-pointer" color="white" size="24">
-          <ShoppingCartIcon />
+          <IconShoppingCartRounded />
         </NIcon>
       </NBadge>
     </NButton>
@@ -137,7 +137,7 @@ defineExpose({
               :key="product?.id"
               v-for="{ product }, index in cartList"
             >
-              <NuxtLink :to="{ name: 'Product', params: { productId: product?.id } }" v-slot="{ navigate }" custom>
+              <NuxtLink :to="{ name: 'product-id', params: { id: product?.id } }" v-slot="{ navigate }" custom>
                 <NListItem
                   :class="index !== cartList.length - 1 ? 'border-b' : ''"
                   @click="navigate"

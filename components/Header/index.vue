@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { FavoriteOutlineIcon, PersonIcon, PersonOutlineIcon } from '~/assets'
 import CartShop from '~/components/Cart/Shop.vue'
 import MobileHamburger from '~/components/Mobile/Hamburger.vue'
 import { websiteConfig } from '~/config/website'
 import { fixedHeaderList } from '~/constants'
+import IconFavoriteOutlineRounded from '~icons/material-symbols/favorite-outline-rounded'
+import IconPerson from '~icons/material-symbols/person'
 
 import navs from './Navigation'
 
@@ -66,7 +67,7 @@ function handleClick(target: string) {
             <NuxtLink :to="{ name: 'wishList' }" class="leading-none">
               <NBadge :max="10" :value="favoriteList.length" color="#EE5220">
                 <NIcon class="icon-hover" color="white" size="24">
-                  <FavoriteOutlineIcon />
+                  <IconFavoriteOutlineRounded />
                 </NIcon>
               </NBadge>
             </nuxtlink>
@@ -78,7 +79,7 @@ function handleClick(target: string) {
               type="button"
             >
               <NIcon size="24">
-                <PersonOutlineIcon />
+                <IconPerson />
               </NIcon>
               會員專區
             </button>
@@ -90,7 +91,7 @@ function handleClick(target: string) {
               type="button"
             >
               <NIcon size="24">
-                <PersonIcon />
+                <IconPerson />
               </NIcon>
               登入 / 註冊
             </button>

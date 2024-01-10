@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { KeyboardArrowDownIcon } from '~/assets'
+import IconKeyboardArrowDownRounded from '~icons/material-symbols/keyboard-arrow-down-rounded'
 
 defineProps<{
   title: string
@@ -19,7 +19,7 @@ const handleClose = () => show.value = false
     {{ title }}
     <template #icon>
       <NIcon :class="show ? '-rotate-90' : 'rotate-0'" class="transition-transform duration-300">
-        <KeyboardArrowDownIcon />
+        <IconKeyboardArrowDownRounded />
       </NIcon>
     </template>
   </NButton>

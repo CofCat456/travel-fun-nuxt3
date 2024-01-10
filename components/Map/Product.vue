@@ -2,7 +2,7 @@
 import type { Coordinates, Product } from '~/types'
 
 import { GoogleMap, InfoWindow, Marker, MarkerClusterer } from '@voomap/map'
-import { CloseIcon } from '~/assets'
+import IconCloseRounded from '~icons/material-symbols/close-rounded'
 
 const props = defineProps<{
   isMobile: boolean
@@ -105,7 +105,7 @@ defineExpose({
         type="button"
       >
         <NIcon size="24">
-          <CloseIcon />
+          <IconCloseRounded />
         </NIcon>
       </button>
     </div>

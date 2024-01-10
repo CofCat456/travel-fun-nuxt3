@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Cart, DrawerActive } from '~/types'
 
-import { DateRangeOutlineIcon } from '~/assets'
+import IconDateRangeOutlineRounded from '~icons/material-symbols/date-range-outline-rounded'
 
 const props = defineProps<{
   id: string
@@ -109,7 +109,7 @@ function disablePreviousDate(ts: number) {
             <NDivider />
             <div class="inline-flex items-center gap-3">
               <NIcon :size="20">
-                <DateRangeOutlineIcon />
+                <IconDateRangeOutlineRounded />
               </NIcon>
               最早可預定日：<NTime :time="date" format="yyyy 年 MM 月 dd 日" />
             </div>

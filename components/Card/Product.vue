@@ -1,12 +1,10 @@
 <script setup lang="ts">
 import type { Product } from '~/types'
 
-import {
-  FavoriteIcon,
-  FavoriteOutlineIcon,
-  LocationOnIcon,
-} from '~/assets'
 import { cityMap } from '~/constants'
+import IconFavoriteOutlineRounded from '~icons/material-symbols/favorite-outline-rounded'
+import IconFavoriteRounded from '~icons/material-symbols/favorite-rounded'
+import IconLocationOnOutlineRounded from '~icons/material-symbols/location-on-outline-rounded'
 
 defineProps<Product & { notRanking?: boolean, ranking?: number }>()
 
@@ -32,10 +30,10 @@ const goProduct = (id: string) => router.push(`/product/${id}`)
     </div>
     <div class="absolute right-[10px] top-[10px] text-white">
       <NIcon class="icon-hover" color="#EE5220" size="24" v-if="checkFavorite(id)">
-        <FavoriteIcon @click.stop="removeFavorite(id, title)" />
+        <IconFavoriteRounded @click.stop="removeFavorite(id, title)" />
       </NIcon>
       <NIcon class="icon-hover" size="24" v-else>
-        <FavoriteOutlineIcon @click.stop="addFavorite(id, title)" />
+        <IconFavoriteOutlineRounded @click.stop="addFavorite(id, title)" />
       </NIcon>
     </div>
     <div
@@ -46,7 +44,7 @@ const goProduct = (id: string) => router.push(`/product/${id}`)
     <div class="flex h-[120px] w-full flex-col gap-1 px-1">
       <div class="inline-flex gap-1 text-sm text-cc-other-4">
         <NIcon size="20">
-          <LocationOnIcon />
+          <IconLocationOnOutlineRounded />
         </NIcon>
         {{ cityMap.get(city) }}
       </div>

@@ -26,7 +26,7 @@ button {
     cursor: not-allowed;
     opacity: theme('opacity.60');
 
-    & > * {
+    &>* {
       cursor: not-allowed;
     }
   }
@@ -55,7 +55,7 @@ button {
 }
 
 /* fix overflow */
-.n-breadcrumb > ul {
+.n-breadcrumb>ul {
   display: flex;
   flex-wrap: wrap;
 }

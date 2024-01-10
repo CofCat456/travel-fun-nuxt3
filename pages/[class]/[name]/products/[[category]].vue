@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { ChevronRightIcon, FlightIcon } from '~/assets'
 import MapProduct from '~/components/Map/Product.vue'
 import { categoryMap, cityMap, countryMap, sortMap } from '~/constants'
 import { Class, Sort } from '~/types'
+import IconChevronRight from '~icons/material-symbols/chevron-right'
+import IconFlight from '~icons/material-symbols/flight'
 
 interface RouterOption {
   params: {
@@ -200,7 +201,7 @@ useSeoMeta({
               <p class="text-sm-content flex items-center justify-start">
                 點擊前往
                 <NIcon :size="20">
-                  <ChevronRightIcon class="transition-transform duration-300 group-hover:translate-x-4" />
+                  <IconChevronRight class="transition-transform duration-300 group-hover:translate-x-4" />
                 </NIcon>
               </p>
             </div>
@@ -209,7 +210,7 @@ useSeoMeta({
             <template #header>
               <div class="flex items-center gap-3">
                 <NIcon size="24">
-                  <FlightIcon />
+                  <IconFlight />
                 </NIcon>
                 目的地
               </div>

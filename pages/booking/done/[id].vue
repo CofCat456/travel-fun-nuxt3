@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import type { Order } from '~/types'
 
-import { DateRangeOutlineIcon, PersonIcon } from '~/assets'
+import IconDateRangeOutlineRounded from '~icons/material-symbols/date-range-outline-rounded'
+import IconPerson from '~icons/material-symbols/person'
 
 const { $errorMsg } = useNuxtApp()
 
@@ -105,13 +106,13 @@ onMounted(() => {
                 <div class="flex flex-wrap items-center gap-x-6 gap-y-2">
                   <div class="inline-flex items-center gap-2">
                     <NIcon size="20">
-                      <DateRangeOutlineIcon />
+                      <IconDateRangeOutlineRounded />
                     </NIcon>
                     可預訂時間：<NTime :time="product.date" format="yyyy 年 MM 月 dd 日" />
                   </div>
                   <div class="inline-flex items-center gap-2">
                     <NIcon size="20">
-                      <PersonIcon />
+                      <IconPerson />
                     </NIcon>
                     <!-- TODO: product 人數 -->
                     人數 1 人

@@ -1,5 +1,8 @@
 <script setup lang="ts">
-import { FavoriteIcon, FavoriteOutlineIcon, LocationOnIcon, StarIcon } from '~/assets'
+import IconFavoriteOutlineRounded from '~icons/material-symbols/favorite-outline-rounded'
+import IconFavoriteRounded from '~icons/material-symbols/favorite-rounded'
+import IconKidAStar from '~icons/material-symbols/kid-star'
+import IconLocationOnOutlineRounded from '~icons/material-symbols/location-on-outline-rounded'
 
 defineProps<{
   isMobile: boolean
@@ -27,7 +30,7 @@ function toggleFavoriteHandler(id: string, title: string) {
     <div class="flex items-center">
       <div class="flex items-center">
         <NIcon color="#EE5220" size="20">
-          <StarIcon />
+          <IconKidAStar />
         </NIcon>
         <span class="px-1 font-medium leading-5 text-cc-accent"> {{ evaluate }} </span>
       </div>
@@ -37,16 +40,16 @@ function toggleFavoriteHandler(id: string, title: string) {
     </div>
     <div class="flex flex-1 cursor-pointer items-center whitespace-nowrap hover:underline" v-if="!isMobile">
       <NIcon size="24">
-        <LocationOnIcon />
+        <IconLocationOnOutlineRounded />
       </NIcon>
       <span @click="scrollTo('map')" class="ml-1">{{ address }}</span>
     </div>
     <div :class="checkFavorite(id) ? 'text-cc-accent' : 'hover:text-cc-accent'" @click="toggleFavoriteHandler(id, title)" class="flex cursor-pointer items-center transition-colors" v-if="!isMobile">
       <NIcon class="icon-hover" size="24" v-if="checkFavorite(id)">
-        <FavoriteIcon />
+        <IconFavoriteRounded />
       </NIcon>
       <NIcon class="icon-hover" size="24" v-else>
-        <FavoriteOutlineIcon />
+        <IconFavoriteOutlineRounded />
       </NIcon>
       <span class="ml-2 text-sm">加入我的最愛</span>
     </div>

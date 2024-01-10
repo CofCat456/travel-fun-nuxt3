@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ChevronRightIcon } from '~/assets'
+import IconChevronRight from '~icons/material-symbols/chevron-right'
 
 import type { Product } from '../types'
 
@@ -46,7 +46,7 @@ const productMap = ref<InstanceType<typeof MapProduct>>()
             <p class="flex items-center">
               點擊前往
               <NIcon :size="20">
-                <ChevronRightIcon class="transition-transform duration-300 group-hover:translate-x-4" />
+                <IconChevronRight class="transition-transform duration-300 group-hover:translate-x-4" />
               </NIcon>
             </p>
           </div>

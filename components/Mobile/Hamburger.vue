@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import type { DrawerActive } from '@/types'
 
-import { ChevronRightIcon, TableRowsRoundedIcon } from '~/assets'
 import navs, { handleItemHeaderClick } from '~/components/Header/Navigation'
+import IconChevronRight from '~icons/material-symbols/chevron-right'
+import IconTableRowsNarrowRounded from '~icons/material-symbols/table-rows-narrow-rounded'
 
 const emit = defineEmits<{
   active: [target: string]
@@ -42,7 +43,7 @@ defineExpose({
   <template v-if="isMobile">
     <NButton @click="toggleActive" text>
       <NIcon color="#fff" size="24">
-        <TableRowsRoundedIcon />
+        <IconTableRowsNarrowRounded />
       </NIcon>
     </NButton>
     <NDrawer
@@ -65,7 +66,7 @@ defineExpose({
       >
         <template #arrow>
           <NIcon size="24">
-            <ChevronRightIcon />
+            <IconChevronRight />
           </NIcon>
         </template>
 

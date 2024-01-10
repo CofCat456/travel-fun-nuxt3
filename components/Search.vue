@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { LocationOnIcon } from '~/assets'
 import { cityMap } from '~/constants'
+import IconLocationOnOutlineRounded from '~icons/material-symbols/location-on-outline-rounded'
 
 const productStore = useProductStore()
 
@@ -56,7 +56,7 @@ function handleSearch() {
                     <div class="flex items-center justify-between">
                       <div class="flex items-center gap-1 text-cc-other-4">
                         <NIcon size="16">
-                          <LocationOnIcon />
+                          <IconLocationOnOutlineRounded />
                         </NIcon>
                         <p class="text-[12px]">
                           {{ cityMap.get(city) }}

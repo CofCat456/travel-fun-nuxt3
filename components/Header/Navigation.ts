@@ -1,7 +1,8 @@
 import type { CollapseProps } from 'naive-ui'
 
 import NuxtLink from '#app/components/nuxt-link'
-import { ConfirmationNumberOutlineRoundedIcon, FlightTakeoffIcon } from '~/assets'
+import IconConfirmationNumberOutlineRounded from '~icons/material-symbols/confirmation-number-outline-rounded'
+import IconFlightTakeoffRounded from '~icons/material-symbols/flight-takeoff-rounded'
 import { NCollapseItem, NIcon } from 'naive-ui'
 import { h } from 'vue'
 
@@ -47,7 +48,7 @@ export default [
       to: packageRouterTo,
     }, () => [h(NIcon, {
       size: 24,
-    }, () => h(ConfirmationNumberOutlineRoundedIcon)), '景點套票']),
+    }, () => h(IconConfirmationNumberOutlineRounded)), '景點套票']),
     mobileComponent: h(NCollapseItem, {
       name: 'package',
     }, {
@@ -65,7 +66,7 @@ export default [
       to: tourRouterTo,
     }, () => [h(NIcon, {
       size: 24,
-    }, () => h(FlightTakeoffIcon)), '觀光行程']),
+    }, () => h(IconFlightTakeoffRounded)), '觀光行程']),
     mobileComponent: h(NCollapseItem, {
       name: 'tours',
     }, {

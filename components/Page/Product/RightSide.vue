@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import type { AffixProps } from 'naive-ui'
 
-import { FavoriteIcon, FavoriteOutlineIcon } from '~/assets'
+import IconFavoriteOutlineRounded from '~icons/material-symbols/favorite-outline-rounded'
+import IconFavoriteRounded from '~icons/material-symbols/favorite-rounded'
 
 const props = defineProps<{
   isMobile: boolean
@@ -29,10 +30,10 @@ const getBindValues = computed<AffixProps>(() => {
     <div class="flex items-center gap-x-10 border border-cc-other-5/50 bg-cc-other-1 px-5 py-2 md:flex-col md:items-start md:gap-x-0 md:rounded-2xl md:p-5">
       <template v-if="isMobile">
         <NIcon class="icon-hover" color="#EE5220" size="24" v-if="checkFavorite(id)">
-          <FavoriteIcon @click.stop="removeFavorite(id, title)" />
+          <IconFavoriteRounded @click.stop="removeFavorite(id, title)" />
         </NIcon>
         <NIcon class="icon-hover" size="24" v-else>
-          <FavoriteOutlineIcon @click.stop="addFavorite(id, title)" />
+          <IconFavoriteOutlineRounded @click.stop="addFavorite(id, title)" />
         </NIcon>
       </template>
       <div class="mb-4" v-else>
