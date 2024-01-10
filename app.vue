@@ -33,15 +33,13 @@ const getThemeOverrides = computed(() => {
 
 <template>
   <NConfigProvider :theme-overrides="getThemeOverrides">
-    <NLoadingBarProvider>
-      <NMessageProvider>
-        <NDialogProvider>
-          <NuxtLayout name="front">
-            <NuxtLoadingIndicator color="#EE5220" />
-            <NuxtPage />
-          </NuxtLayout>
-        </NDialogProvider>
-      </NMessageProvider>
-    </NLoadingBarProvider>
+    <NMessageProvider>
+      <NDialogProvider>
+        <NuxtLayout name="front">
+          <NuxtLoadingIndicator color="#EE5220" />
+          <NuxtPage />
+        </NuxtLayout>
+      </NDialogProvider>
+    </NMessageProvider>
   </NConfigProvider>
 </template>
