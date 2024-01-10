@@ -15,6 +15,8 @@ const emit = defineEmits<{
   active: [target: string]
 }>()
 
+const route = useRoute()
+
 const { isMobile } = useDevice()
 
 const tooltipThemeOverrides: TooltipThemeOverrides = {
@@ -36,9 +38,12 @@ function toggleActive() {
 
 const closeActive = () => activate.active = false
 
-onBeforeRouteUpdate(() => {
-  closeActive()
-})
+watch(
+  () => route.path,
+  () => {
+    closeActive()
+  },
+)
 
 defineExpose({
   closeActive,
