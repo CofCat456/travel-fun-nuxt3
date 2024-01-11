@@ -10,7 +10,7 @@ const searchText = ref('')
 
 const getDebounceSearchText = computed({
   get: () => searchText.value,
-  set: debounce((newValue: string) => searchText.value = newValue, 200),
+  set: useDebounceFn((newValue: string) => searchText.value = newValue, 200),
 })
 
 const getFilterList = computed(() => productList.value.filter(({ city, title }) => title.match(searchText.value) || (cityMap.get(city)).match(searchText.value)))

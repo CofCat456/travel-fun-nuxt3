@@ -199,10 +199,13 @@ useSeoMeta({
 <style scoped>
 :deep(.list) > ul,
 :deep(.list) > ol {
-  @apply list-disc pl-6 text-base tracking-wide;
+  list-style-type: theme('listStyleType.disc');
+  padding-left: theme('padding.6');
+  font-size: theme('fontSize.base');
+  letter-spacing: theme('letterSpacing.wide');
 }
 
 :deep(.list) li {
-  @apply py-1;
+  padding: theme('padding.1') 0;
 }
 </style>

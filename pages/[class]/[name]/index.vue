@@ -117,7 +117,7 @@ useSeoMeta({
       @btn-click="goProducts"
       title="最新上架"
     />
-    <LazyKnow :is-mobile="isMobile" :name="getClassName" :products="getFilterData(productList, getArgs)" />
+    <Know :is-mobile="isMobile" :name="getClassName" :products="getFilterData(productList, getArgs)" />
     <SwiperCity :curr-city="getClassName" title="探索其他城市" v-if="isCity" />
   </section>
 </template>

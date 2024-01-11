@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import MapProduct from '~/components/Map/Product.vue'
 import { categoryMap, cityMap, countryMap, sortMap } from '~/constants'
-import { Class, Sort } from '~/types'
+import { Class, type Product, Sort } from '~/types'
 import IconChevronRight from '~icons/material-symbols/chevron-right'
 import IconFlight from '~icons/material-symbols/flight'
 
@@ -21,9 +21,10 @@ const productStore = useProductStore()
 
 const { isMobile } = useDevice()
 
-const { getFilterData, getProducts, getSortData } = productStore
+const { getFilterData, getSortData } = productStore
 
 const productMap = ref<InstanceType<typeof MapProduct>>()
+const productShowList = ref<Product[]>([])
 
 // TODO: need to refactor
 const category = computed(() => route.params.category as string) || Sort.Popular
@@ -129,8 +130,39 @@ function updateSort(item: Sort) {
   })
 }
 
-onMounted(() => getProducts())
+function updateShowList() {
+  const gap = getProductList.value.length - productShowList.value.length
 
+  if (gap === 0)
+    return
+
+  const startLength = productShowList.value.length
+
+  if (Math.floor(gap / 10) > 0)
+    productShowList.value.push(...getProductList.value.slice(startLength, startLength + 10))
+  else
+    productShowList.value.push(...getProductList.value.slice(startLength, startLength + gap))
+}
+
+const { arrivedState } = useScroll(document, {
+  behavior: 'smooth',
+  throttle: 100,
+})
+
+watch(
+  arrivedState,
+  state => (state.bottom ? updateShowList() : null),
+  {
+    immediate: true,
+  },
+)
+
+onBeforeMount(() => {
+  // Image preload
+  const img = new Image()
+  for (const i of getProductList.value)
+    img.src = i.imageUrl
+})
 
 useSeoMeta({
   description: `探索${chName.value}之美，我們提供獨家行程、精選景點門票。旅遊趣助您輕鬆暢遊，發現${chName.value}獨特風情。開啟美好旅程，感受城市之魅！`,
@@ -140,7 +172,7 @@ useSeoMeta({
 
 <template>
   <section id="products">
-    <div class="bg-cc-other-7/80 bg-cover py-2 md:px-6 md:pt-24">
+    <div class="bg-cc-other-7/80 bg-cover py-2 md:pt-24">
       <NuxtLayout>
         <NBreadcrumb separator=">">
           <template :key="title" v-for="{ title, pathName, params } in getBreadcrumbs">
@@ -238,7 +270,7 @@ useSeoMeta({
           <div class="relative grid gap-x-5 gap-y-8 md:grid-cols-2 md:py-8 lg:grid-cols-4">
             <CardProduct
               :key="product.id"
-              v-for="product in getProductList"
+              v-for="product in productShowList"
               v-bind="product"
               not-ranking
             />
