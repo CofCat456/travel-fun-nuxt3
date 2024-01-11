@@ -44,9 +44,9 @@ const rules = computed<FormRules>(() => ({
     required: true,
     trigger: 'change',
   },
-}))
+}));
 
-async function getOrder() {
+(async () => {
   const { data } = await booking.getOrder(id)
 
   if (data.value) {
@@ -58,7 +58,7 @@ async function getOrder() {
       if (is_paid) {
         $errorMsg('此訂單已經付款')
         setTimeout(() => {
-          router.go(-1)
+          navigateTo('/')
         }, 1600)
       }
 
@@ -71,10 +71,10 @@ async function getOrder() {
   else {
     $errorMsg('此訂單不存在')
     setTimeout(() => {
-      router.go(-1)
+      navigateTo('/')
     }, 1600)
   }
-}
+})()
 
 async function payHandler() {
   isLoading.value = true
@@ -100,10 +100,6 @@ function onSubmit() {
       payHandler()
   })
 }
-
-onMounted(() => {
-  getOrder()
-})
 </script>
 
 <template>
@@ -130,6 +126,7 @@ onMounted(() => {
   </article>
   <PageBookMenu
     :final-total="finalTotal"
+    :is-disabled="total === 0 && finalTotal === 0"
     :is-loading="isLoading"
     :total="total"
     @submit="onSubmit"

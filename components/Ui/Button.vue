@@ -11,7 +11,12 @@ withDefaults(defineProps<{
 </script>
 
 <template>
-  <button :class="isFull ? 'w-full' : ''" :disabled="isLoading || disabled" :type="type" class="btn">
+  <button
+    :class="isFull ? 'w-full' : ''"
+    :disabled="isLoading || disabled"
+    :type="type"
+    class="btn"
+  >
     <slot name="loading" v-if="isLoading">
       <svg
         class="h-6 w-6 animate-spin py-1 text-white"

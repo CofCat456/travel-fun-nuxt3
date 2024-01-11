@@ -4,6 +4,7 @@ defineProps<{
   total: number
   finalTotal: number
   isLoading?: boolean
+  isDisabled?: boolean
 }>()
 
 defineEmits<{
@@ -36,7 +37,7 @@ defineEmits<{
         </NGridItem>
 
         <NGridItem :span="2">
-          <UiButton :is-loading="isLoading" @click="$emit('submit')" class="mt-4" type="submit" is-full>
+          <UiButton :disabled="isDisabled" :is-loading="isLoading" @click="$emit('submit')" class="mt-4" type="submit" is-full>
             {{ text }}
           </UiButton>
         </NGridItem>

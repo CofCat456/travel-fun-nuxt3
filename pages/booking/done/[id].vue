@@ -7,7 +7,6 @@ import IconPerson from '~icons/material-symbols/person'
 const { $errorMsg } = useNuxtApp()
 
 const route = useRoute()
-const router = useRouter()
 
 const { booking } = useApi()
 
@@ -36,9 +35,9 @@ const orderValue: Order = reactive({
   },
 })
 
-const getResultDesc = computed(() => `訂單明細將寄至： ${orderValue.user.email}`)
+const getResultDesc = computed(() => `訂單明細將寄至： ${orderValue.user.email}`);
 
-async function getOrder() {
+(async () => {
   const { data } = await booking.getOrder(route.params.id as string)
 
   if (data.value) {
@@ -50,14 +49,10 @@ async function getOrder() {
   else {
     $errorMsg('此訂單不存在')
     setTimeout(() => {
-      router.go(-1)
+      navigateTo('/')
     }, 1600)
   }
-}
-
-onMounted(() => {
-  getOrder()
-})
+})()
 </script>
 
 <template>
