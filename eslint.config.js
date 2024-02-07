@@ -1,4 +1,4 @@
-import antfu from '@antfu/eslint-config'
+import antfu from "@antfu/eslint-config";
 
 export default antfu(
   {
@@ -6,139 +6,139 @@ export default antfu(
   },
   {
     rules: {
-      'import/order': 'off',
-      'perfectionist/sort-array-includes': [
-        'error',
+      "import/order": "off",
+      "perfectionist/sort-array-includes": [
+        "error",
         {
-          'order': 'asc',
-          'spread-last': true,
-          'type': 'natural',
+          order: "asc",
+          "spread-last": true,
+          type: "natural",
         },
       ],
-      'perfectionist/sort-enums': [
-        'error',
+      "perfectionist/sort-enums": [
+        "error",
         {
-          order: 'asc',
-          type: 'natural',
+          order: "asc",
+          type: "natural",
         },
       ],
-      'perfectionist/sort-exports': [
-        'error',
+      "perfectionist/sort-exports": [
+        "error",
         {
-          order: 'asc',
-          type: 'natural',
+          order: "asc",
+          type: "natural",
         },
       ],
-      'perfectionist/sort-imports': [
-        'error',
+      "perfectionist/sort-imports": [
+        "error",
         {
-          'custom-groups': {
+          "custom-groups": {
             type: {
-              react: 'react',
+              react: "react",
             },
             value: {
-              nanostores: '@nanostores/**',
-              react: ['react', 'react-*'],
+              nanostores: "@nanostores/**",
+              react: ["react", "react-*"],
             },
           },
-          'groups': [
-            'type',
-            'react',
-            'nanostores',
-            ['builtin', 'external'],
-            'internal-type',
-            'internal',
-            ['parent-type', 'sibling-type', 'index-type'],
-            ['parent', 'sibling', 'index'],
-            'side-effect',
-            'style',
-            'object',
-            'unknown',
+          groups: [
+            "type",
+            "react",
+            "nanostores",
+            ["builtin", "external"],
+            "internal-type",
+            "internal",
+            ["parent-type", "sibling-type", "index-type"],
+            ["parent", "sibling", "index"],
+            "side-effect",
+            "style",
+            "object",
+            "unknown",
           ],
-          'internal-pattern': [
-            '@/components/**',
-            '@/stores/**',
-            '@/pages/**',
-            '@/lib/**',
+          "internal-pattern": [
+            "@/components/**",
+            "@/stores/**",
+            "@/pages/**",
+            "@/lib/**",
           ],
-          'newlines-between': 'always',
-          'order': 'asc',
-          'type': 'natural',
+          "newlines-between": "always",
+          order: "asc",
+          type: "natural",
         },
       ],
-      'perfectionist/sort-interfaces': [
-        'error',
+      "perfectionist/sort-interfaces": [
+        "error",
         {
-          order: 'asc',
-          type: 'natural',
+          order: "asc",
+          type: "natural",
         },
       ],
-      'perfectionist/sort-jsx-props': [
-        'error',
+      "perfectionist/sort-jsx-props": [
+        "error",
         {
-          groups: ['multiline', 'unknown', 'shorthand'],
-          order: 'asc',
-          type: 'natural',
+          groups: ["multiline", "unknown", "shorthand"],
+          order: "asc",
+          type: "natural",
         },
       ],
-      'perfectionist/sort-maps': [
-        'error',
+      "perfectionist/sort-maps": [
+        "error",
         {
-          order: 'asc',
-          type: 'natural',
+          order: "asc",
+          type: "natural",
         },
       ],
-      'perfectionist/sort-named-exports': [
-        'error',
+      "perfectionist/sort-named-exports": [
+        "error",
         {
-          order: 'asc',
-          type: 'natural',
+          order: "asc",
+          type: "natural",
         },
       ],
-      'perfectionist/sort-named-imports': [
-        'error',
+      "perfectionist/sort-named-imports": [
+        "error",
         {
-          order: 'asc',
-          type: 'natural',
+          order: "asc",
+          type: "natural",
         },
       ],
-      'perfectionist/sort-objects': [
-        'error',
+      "perfectionist/sort-objects": [
+        "error",
         {
-          'custom-groups': {
-            id: 'id',
+          "custom-groups": {
+            id: "id",
           },
-          'groups': ['id', 'unknown'],
-          'order': 'asc',
-          'partition-by-comment': 'Part:**',
-          'type': 'natural',
+          groups: ["id", "unknown"],
+          order: "asc",
+          "partition-by-comment": "Part:**",
+          type: "natural",
         },
       ],
-      'perfectionist/sort-svelte-attributes': [
-        'error',
+      "perfectionist/sort-svelte-attributes": [
+        "error",
         {
-          groups: ['multiline', 'unknown', ['shorthand', 'svelte-shorthand']],
-          order: 'asc',
-          type: 'natural',
+          groups: ["multiline", "unknown", ["shorthand", "svelte-shorthand"]],
+          order: "asc",
+          type: "natural",
         },
       ],
-      'perfectionist/sort-union-types': [
-        'error',
+      "perfectionist/sort-union-types": [
+        "error",
         {
-          order: 'asc',
-          type: 'natural',
+          order: "asc",
+          type: "natural",
         },
       ],
-      'perfectionist/sort-vue-attributes': [
-        'error',
+      "perfectionist/sort-vue-attributes": [
+        "error",
         {
-          groups: ['multiline', 'unknown', 'shorthand'],
-          order: 'asc',
-          type: 'natural',
+          groups: ["multiline", "unknown", "shorthand"],
+          order: "asc",
+          type: "natural",
         },
       ],
-      'style/no-multiple-empty-lines': 'off',
-      'vue/attributes-order': 'off',
+      "style/no-multiple-empty-lines": "off",
+      "vue/attributes-order": "off",
     },
   },
-)
+);
