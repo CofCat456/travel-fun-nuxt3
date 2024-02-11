@@ -108,7 +108,7 @@ useSeoMeta({
       <h1 class="text-2xl font-bold md:text-3xl">
         {{ product.title }}
       </h1>
-      <PageProductTopWrapper
+      <ProductTopWrapper
         :address="product.address"
         :evaluate="product.evaluate"
         :evaluate-num="product.evaluateNum"
@@ -135,10 +135,10 @@ useSeoMeta({
       </teleport>
       <div class="flex flex-col gap-8 md:flex-row">
         <div class="order-1 w-full md:w-8/12" v-if="product.features">
-          <PageProductLeftSide :features="product.features" />
+          <ProductLeftSide :features="product.features" />
         </div>
         <aside :class="isMobile ? 'order-first' : 'order-2'">
-          <PageProductRightSide
+          <ProductRightSide
             :id="product.id"
             :is-mobile="isMobile"
             :origin-price="product.origin_price"
@@ -148,13 +148,13 @@ useSeoMeta({
         </aside>
       </div>
     </NuxtLayout>
-    <div class="bg-cc-other-7/80 py-5 md:py-10" v-if="product.plans && product.plans?.length !== 0">
-      <LazyPageProductPlans>
+    <div class="py-5 bg-cc-other-7/80 md:py-10" v-if="product.plans && product.plans?.length !== 0">
+      <LazyProductPlans>
         <template
           :key="plan.content"
           v-for="plan in product.plans || []"
         >
-          <PageProductPlan
+          <ProductPlan
             :content="plan.content"
             :date="product.date"
             :id="product.id"
@@ -168,11 +168,11 @@ useSeoMeta({
             @add-cart="onAddCart"
           />
         </template>
-      </LazyPageProductPlans>
+      </LazyProductPlans>
     </div>
     <NuxtLayout class="py-5 md:py-10">
       <NSpace :size="60" class="w-full md:w-8/12 md:pr-8" vertical>
-        <PageProductContent :content="product.content" v-if="product.content" />
+        <ProductContent :content="product.content" v-if="product.content" />
         <div :class="isMobile ? 'w-full' : 'w-4/5'">
           <UiTitle title="景點地圖" page />
           <Embed

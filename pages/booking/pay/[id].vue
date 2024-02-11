@@ -103,7 +103,7 @@ function onSubmit() {
 </script>
 
 <template>
-  <article class="flex flex-1 flex-col gap-8">
+  <article class="flex flex-col flex-1 gap-8">
     <NCard :bordered="false">
       <NCollapse default-expanded-names="1" accordion>
         <NCollapseItem name="1" title="付款方式">
@@ -124,7 +124,7 @@ function onSubmit() {
       </NCollapse>
     </NCard>
   </article>
-  <PageBookMenu
+  <BookMenu
     :final-total="finalTotal"
     :is-disabled="total === 0 && finalTotal === 0"
     :is-loading="isLoading"

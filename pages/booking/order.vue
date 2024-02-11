@@ -137,7 +137,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <article class="flex flex-1 flex-col gap-8">
+  <article class="flex flex-col flex-1 gap-8">
     <NCard :bordered="false">
       <NCollapse default-expanded-names="1" accordion>
         <NCollapseItem name="1" title="訂購人資料">
@@ -210,7 +210,7 @@ onMounted(() => {
       </NCollapse>
     </NCard>
   </article>
-  <PageBookMenu
+  <BookMenu
     :final-total="finalTotal"
     :is-loading="isLoading"
     :total="total"
