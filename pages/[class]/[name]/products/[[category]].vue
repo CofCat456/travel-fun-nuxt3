@@ -27,17 +27,26 @@ const productMap = ref<InstanceType<typeof MapProduct>>()
 const productShowList = ref<Product[]>([])
 
 // TODO: need to refactor
-const category = computed(() => route.params.category as string) || Sort.Popular
+const category
+  = computed(() => route.params.category as string) || Sort.Popular
 const isCity = computed(() => route.params.class === Class.City)
 const className = computed(() => route.params.class as string)
 const name = computed(() => route.params.name as string)
-const chName = computed(() => isCity.value ? cityMap.get(name.value) : countryMap.get(name.value))
-const sort = computed(() => route.query.sort as Sort || Sort.NewArrivals)
-const getCategory = computed<string>(() => categoryMap.get(category.value) ?? '所有活動')
+const chName = computed(() =>
+  isCity.value ? cityMap.get(name.value) : countryMap.get(name.value),
+)
+const sort = computed(() => (route.query.sort as Sort) || Sort.NewArrivals)
+const getCategory = computed<string>(
+  () => categoryMap.get(category.value) ?? '所有活動',
+)
 const getCategorys = computed<string[]>(() => ['', ...categoryMap.keys()])
 
-const getFilterList = computed<Record<string, Sort>[]>(() =>
-  Array.from(sortMap, ([key, value]) => ({ label: value, value: key })) as any,
+const getFilterList = computed<Record<string, Sort>[]>(
+  () =>
+    Array.from(sortMap, ([key, value]) => ({
+      label: value,
+      value: key,
+    })) as any,
 )
 
 const getEnCitys = computed<Record<string, string>[]>(() =>
@@ -47,7 +56,6 @@ const getEnCitys = computed<Record<string, string>[]>(() =>
 const getEnCountrys = computed<Record<string, string>[]>(() =>
   Array.from(countryMap, ([key, value]) => ({ key, label: value })),
 )
-
 
 const getBreadcrumbs = computed(() => {
   return isCity.value
@@ -138,10 +146,16 @@ function updateShowList() {
 
   const startLength = productShowList.value.length
 
-  if (Math.floor(gap / 10) > 0)
-    productShowList.value.push(...getProductList.value.slice(startLength, startLength + 10))
-  else
-    productShowList.value.push(...getProductList.value.slice(startLength, startLength + gap))
+  if (Math.floor(gap / 10) > 0) {
+    productShowList.value.push(
+      ...getProductList.value.slice(startLength, startLength + 10),
+    )
+  }
+  else {
+    productShowList.value.push(
+      ...getProductList.value.slice(startLength, startLength + gap),
+    )
+  }
 }
 
 const { arrivedState } = useScroll(document, {
@@ -149,19 +163,14 @@ const { arrivedState } = useScroll(document, {
   throttle: 100,
 })
 
-watch(
-  arrivedState,
-  state => (state.bottom ? updateShowList() : null),
-  {
-    immediate: true,
-  },
-)
+watch(arrivedState, state => (state.bottom ? updateShowList() : null), {
+  immediate: true,
+})
 
 onBeforeMount(() => {
   // Image preload
   const img = new Image()
-  for (const i of getProductList.value)
-    img.src = i.imageUrl
+  for (const i of getProductList.value) img.src = i.imageUrl
 })
 
 useSeoMeta({
@@ -175,7 +184,10 @@ useSeoMeta({
     <div class="bg-cc-other-7/80 bg-cover py-2 md:pt-24">
       <NuxtLayout>
         <NBreadcrumb separator=">">
-          <template :key="title" v-for="{ title, pathName, params } in getBreadcrumbs">
+          <template
+            :key="title"
+            v-for="{ title, pathName, params } in getBreadcrumbs"
+          >
             <NBreadcrumbItem v-if="pathName">
               <NuxtLink :to="{ name: pathName, params }">
                 {{ title }}
@@ -220,9 +232,13 @@ useSeoMeta({
         <div class="mr-6 block w-64" v-if="!isMobile">
           <div
             style="
-            background-image: linear-gradient(90deg, #fff7eb, rgba(255, 247, 234, 0.2)),
-              url(/images/map.jpg);
-          "
+              background-image: linear-gradient(
+                  90deg,
+                  #fff7eb,
+                  rgba(255, 247, 234, 0.2)
+                ),
+                url(/images/map.jpg);
+            "
             @click="productMap?.openMap"
             class="group relative mb-5 h-32 w-full cursor-pointer rounded-m border border-cc-other-5 bg-no-repeat object-cover object-center transition-all duration-300 hover:brightness-[.8]"
           >
@@ -233,7 +249,9 @@ useSeoMeta({
               <p class="text-sm-content flex items-center justify-start">
                 點擊前往
                 <NIcon :size="20">
-                  <IconChevronRight class="transition-transform duration-300 group-hover:translate-x-4" />
+                  <IconChevronRight
+                    class="transition-transform duration-300 group-hover:translate-x-4"
+                  />
                 </NIcon>
               </p>
             </div>
@@ -267,7 +285,9 @@ useSeoMeta({
             @update:sort="updateSort"
             v-else
           />
-          <div class="relative grid gap-x-5 gap-y-8 md:grid-cols-2 md:py-8 lg:grid-cols-4">
+          <div
+            class="relative grid gap-x-5 gap-y-8 md:grid-cols-2 md:py-8 lg:grid-cols-4"
+          >
             <CardProduct
               :key="product.id"
               v-for="product in productShowList"
@@ -278,7 +298,11 @@ useSeoMeta({
         </main>
       </div>
     </NuxtLayout>
-    <MapProduct :is-mobile="isMobile" :products="getProductList" ref="productMap" />
+    <MapProduct
+      :is-mobile="isMobile"
+      :products="getProductList"
+      ref="productMap"
+    />
   </section>
 </template>
 

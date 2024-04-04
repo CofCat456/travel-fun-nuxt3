@@ -4,7 +4,9 @@ import type { Cart, Product } from '~/types'
 import { Embed } from '@voomap/map'
 import { cityMap } from '~/constants/map'
 
-const { public: { googleMapApiKey } } = useRuntimeConfig()
+const {
+  public: { googleMapApiKey },
+} = useRuntimeConfig()
 
 const { product: productApi } = useApi()
 const { isMobile } = useDevice()
@@ -94,7 +96,10 @@ useSeoMeta({
     <div id="banner" ref="bannerRef" />
     <NuxtLayout class="pb-5 md:py-5">
       <NBreadcrumb class="my-2" separator=">">
-        <template :key="title" v-for="{ title, params, pathName } in getBreadcrumbs">
+        <template
+          :key="title"
+          v-for="{ title, params, pathName } in getBreadcrumbs"
+        >
           <NBreadcrumbItem v-if="pathName">
             <NuxtLink :to="{ name: pathName, params }">
               {{ title }}
@@ -117,11 +122,7 @@ useSeoMeta({
         :title="product.title"
       />
 
-      <teleport
-        :disabled="!isMobile"
-        to="#banner"
-        v-if="bannerRef"
-      >
+      <teleport :disabled="!isMobile" to="#banner" v-if="bannerRef">
         <SwiperBanner
           :images-url="product.imagesUrl || []"
           :is-mobile="isMobile"
@@ -148,12 +149,12 @@ useSeoMeta({
         </aside>
       </div>
     </NuxtLayout>
-    <div class="py-5 bg-cc-other-7/80 md:py-10" v-if="product.plans && product.plans?.length !== 0">
+    <div
+      class="py-5 bg-cc-other-7/80 md:py-10"
+      v-if="product.plans && product.plans?.length !== 0"
+    >
       <LazyProductPlans>
-        <template
-          :key="plan.content"
-          v-for="plan in product.plans || []"
-        >
+        <template :key="plan.content" v-for="plan in product.plans || []">
           <ProductPlan
             :content="plan.content"
             :date="product.date"
