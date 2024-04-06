@@ -38,7 +38,7 @@ const orderValue: Order = reactive({
 const getResultDesc = computed(() => `訂單明細將寄至： ${orderValue.user.email}`)
 
 async function sendEmail(order: Order) {
-  if (process.server) {
+  if (process.client) {
     await $fetch('/api/email/buy-success', {
       body: JSON.stringify(order),
       method: 'POST',

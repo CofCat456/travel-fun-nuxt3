@@ -87,7 +87,7 @@ function handleClick(target: string) {
           <NuxtLink :to="{ name: 'login' }" v-slot="{ navigate }" custom v-else>
             <button
               @click="navigate"
-              class="hidden w-[144px] items-center justify-center gap-[6px] rounded-[50px] bg-cc-other-8 px-4 py-2 text-base transition-colors duration-300 hover:bg-cc-accent lg:flex"
+              class="hidden items-center justify-center gap-[6px] rounded-[50px] bg-cc-other-8 px-4 py-2 text-base transition-colors duration-300 hover:bg-cc-accent lg:flex"
               type="button"
             >
               <NIcon size="24">
