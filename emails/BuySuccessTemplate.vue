@@ -2,21 +2,6 @@
 import type { Product } from '~/types'
 import type { StyleValue } from 'vue'
 
-import {
-  EBody,
-  EColumn,
-  EContainer,
-  EFont,
-  EHead,
-  EHeading,
-  EHtml,
-  EImg,
-  ERow,
-  ESection,
-  ETailwind,
-  EText,
-} from 'vue-email'
-
 defineProps<{
   products: Product[]
   name: string

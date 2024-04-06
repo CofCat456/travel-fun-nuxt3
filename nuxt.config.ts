@@ -69,6 +69,7 @@ export default defineNuxtConfig({
     // only server
     gmailAppPassword: '',
     gmailAppUserMail: '',
+    gmailBaseUrl: '',
     // server & client
     public: {
       apiBase: '', // can be overridden by NUXT_PUBLIC_API_BASE environment variable
@@ -81,6 +82,7 @@ export default defineNuxtConfig({
   },
   vueEmail: {
     autoImport: true,
-    baseUrl: 'https://travel-fun-nuxt3.vercel.app/',
+    // eslint-disable-next-line node/prefer-global/process
+    baseUrl: process.env.NUXT_GMAIL_BASE_URL,
   },
 })
