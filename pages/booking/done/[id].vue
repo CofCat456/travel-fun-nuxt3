@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Order } from '~/types'
+import type { Order, User } from '~/types'
 
 import IconDateRangeOutlineRounded from '~icons/material-symbols/date-range-outline-rounded'
 import IconPerson from '~icons/material-symbols/person'
@@ -35,7 +35,15 @@ const orderValue: Order = reactive({
   },
 })
 
-const getResultDesc = computed(() => `訂單明細將寄至： ${orderValue.user.email}`);
+const getResultDesc = computed(() => `訂單明細將寄至： ${orderValue.user.email}`)
+
+async function sendEmail(order: Order) {
+  await $fetch('/api/email/buy-success', {
+    body: JSON.stringify(order),
+    method: 'POST',
+  })
+}
+
 
 (async () => {
   const { data } = await booking.getOrder(route.params.id as string)
@@ -43,8 +51,10 @@ const getResultDesc = computed(() => `訂單明細將寄至： ${orderValue.user
   if (data.value) {
     const { order, success } = data.value
 
-    if (success)
+    if (success) {
       Object.assign(orderValue, order)
+      await sendEmail(orderValue)
+    }
   }
   else {
     $errorMsg('此訂單不存在')

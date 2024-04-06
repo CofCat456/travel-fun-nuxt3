@@ -66,6 +66,10 @@ export default defineNuxtConfig({
     '@vue-email/nuxt',
   ],
   runtimeConfig: {
+    // only server
+    gmailAppPassword: '',
+    gmailAppUserMail: '',
+    // server & client
     public: {
       apiBase: '', // can be overridden by NUXT_PUBLIC_API_BASE environment variable
       apiSecret: '', // can be overridden by NUXT_API_SECRET environment variable
@@ -74,5 +78,9 @@ export default defineNuxtConfig({
   },
   swiper: {
     modules: ['navigation', 'free-mode', 'pagination'],
+  },
+  vueEmail: {
+    autoImport: true,
+    baseUrl: 'https://travel-fun-nuxt3.vercel.app/',
   },
 })
